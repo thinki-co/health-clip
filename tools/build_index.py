@@ -2,6 +2,9 @@
 import os, re, sys
 root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 s = open(os.path.join(root, "src", "feed.html"), encoding="utf-8").read()
+# 公開ページの雛形（<html><head>…<body>）付きで保存された場合は、本文部分だけを使う
+if "<body>" in s:
+    s = s.split("<body>", 1)[1].rsplit("</body>", 1)[0]
 # Claude上でしか開けない詳細記事へのリンクを外す
 s = re.sub(r'\n\s*\$\{it\.topic \? `<a class="btn sub" href="\$\{BETA\}#topic-\$\{it\.topic\}"[^\n]*', "", s)
 s = s.replace('<meta name="claude:viewport-fit-sides" content="cover">\n', "")
