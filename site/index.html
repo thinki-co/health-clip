@@ -1,0 +1,683 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-P9D6VCBJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Health Clip</title>
+<meta name="description" content="ネットで話題の「身体によいと言われるもの」を、発信元と販売・PRとの関係つきで集めたサイトです。テーマ・からだの部位・専門分野から探し、気になる記事を保存できます。">
+<meta property="og:title" content="Health Clip ヘルスクリップ">
+<meta property="og:description" content="気になる健康情報を、まとめてチェック。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://healthclip.thinki.co.jp/">
+<link rel="canonical" href="https://healthclip.thinki.co.jp/">
+<meta name="theme-color" content="#2F6BFF">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap">
+<style>
+/* レイアウト：スマホ1カラムのフィード。発信元ラベルを「話し手」、見出しを「発言」として見せる */
+:root {
+  --bg: #F3F8FD;
+  --surface: #FFFFFF;
+  --line: #DCE7F3;
+  --ink: #16324F;
+  --muted: #4A6178;
+  --blue: #2F6BFF;
+  --blue-pale: #E6EEFF;
+  --lime: #B7F34D;
+  --lime-ink: #3D5A00;
+  --tie: #F07A1A;
+  --tie-bg: #FFEBD9;
+  --tie-ink: #8A3B00;
+  --none-bg: #EEF2F6;
+  --star: #E8A500;
+  --star-bg: #FFF4D1;
+  --k-hosp: #E2F6EF; --k-hosp-ink: #0E6B52;
+  --k-news: #EFE8FC; --k-news-ink: #5B33A8;
+  --k-comp: #FCE8F1; --k-comp-ink: #9A1F5A;
+  --k-pub: #E6EEFF; --k-pub-ink: #1F4FD1;
+  --k-paper: #FFF4D6; --k-paper-ink: #7A5600;
+  --grad: linear-gradient(120deg, #2F6BFF 0%, #49A8FF 55%, #36CFC9 100%);
+  --shadow: 0 1px 2px rgba(22,50,79,.06), 0 4px 14px rgba(22,50,79,.05);
+  --f-display: "Plus Jakarta Sans", "Zen Kaku Gothic New", system-ui, sans-serif;
+  --f-body: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0E1A27; --surface: #15263A; --line: #24384F; --ink: #E8F0F8; --muted: #A5B8CB;
+  --blue: #6E9BFF; --blue-pale: #1C2F52; --lime: #B7F34D; --lime-ink: #DFF7B5;
+  --tie: #FF9A45; --tie-bg: #3A2412; --tie-ink: #FFC796; --none-bg: #1C2E43; --star: #FFC83D; --star-bg: #3A3013;
+  --k-hosp: #123A31; --k-hosp-ink: #8FE3C6; --k-news: #2A2045; --k-news-ink: #CDB8FF;
+  --k-comp: #3A1A2B; --k-comp-ink: #FFB0D3; --k-pub: #1C2F52; --k-pub-ink: #A9C3FF;
+  --k-paper: #3A2F12; --k-paper-ink: #F4D67A; --shadow: none; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #0E1A27; --surface: #15263A; --line: #24384F; --ink: #E8F0F8; --muted: #A5B8CB;
+  --blue: #6E9BFF; --blue-pale: #1C2F52; --lime: #B7F34D; --lime-ink: #DFF7B5;
+  --tie: #FF9A45; --tie-bg: #3A2412; --tie-ink: #FFC796; --none-bg: #1C2E43; --star: #FFC83D; --star-bg: #3A3013;
+  --k-hosp: #123A31; --k-hosp-ink: #8FE3C6; --k-news: #2A2045; --k-news-ink: #CDB8FF;
+  --k-comp: #3A1A2B; --k-comp-ink: #FFB0D3; --k-pub: #1C2F52; --k-pub-ink: #A9C3FF;
+  --k-paper: #3A2F12; --k-paper-ink: #F4D67A; --shadow: none; color-scheme: dark; }
+
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 15px; line-height: 1.7; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--surface); }
+.wrap { max-width: 560px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+
+/* ヘッダー */
+.top { background: var(--surface); border-bottom: 1px solid var(--line); }
+.top .wrap { padding-block: 16px 14px; display: grid; gap: 6px; }
+.brandrow { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.logo { display: inline-flex; align-items: center; gap: 7px; font-family: var(--f-display); font-weight: 800; font-size: 24px; letter-spacing: -.01em; color: var(--ink); }
+.kana { font-size: 12px; font-weight: 700; color: var(--muted); letter-spacing: .08em; }
+.catch { margin: 0; font-weight: 900; font-size: 16px; color: var(--ink); }
+.logo b { display: inline-block; width: 22px; height: 22px; border-radius: 7px; background: var(--grad); position: relative; }
+.logo b::after { content: ""; position: absolute; right: -3px; top: -3px; width: 9px; height: 9px; border-radius: 50%; background: var(--lime); border: 2px solid var(--surface); }
+.lead { margin: 0; font-size: 13.5px; color: var(--muted); line-height: 1.65; text-wrap: pretty; }
+
+/* フィルター */
+.filters { position: relative; z-index: 5; background: var(--bg); border-bottom: 1px solid var(--line); }
+.filters .wrap { padding-block: 10px; }
+.chips { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; margin: 0 -2px; padding: 2px; }
+.chips::-webkit-scrollbar { display: none; }
+.ftabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-bottom: 1px solid var(--line); }
+.ftabs button { border: 0; background: none; color: var(--muted); font: 700 13.5px/1.2 var(--f-body); padding: 10px 2px 11px; border-bottom: 3px solid transparent; cursor: pointer; }
+.ftabs button[aria-selected="true"] { color: var(--blue); border-bottom-color: var(--blue); }
+.ftabs button:focus-visible { outline: 3px solid var(--blue); outline-offset: -3px; }
+.panel { display: grid; gap: 8px; margin-top: 12px; }
+.panel .chips { flex-wrap: wrap; overflow: visible; margin: 0; padding: 0; gap: 7px; }
+.panel .glbl { font-size: 12px; font-weight: 700; color: var(--muted); }
+.panel .chip { padding: 8px 13px; font-size: 13px; }
+.prow { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.prow .lbl { flex: none; font-size: 12px; font-weight: 700; color: var(--muted); }
+.prow .chips { flex: 1; min-width: 0; }
+.chip small { font-weight: 500; font-size: 11px; opacity: .75; margin-left: 3px; font-variant-numeric: tabular-nums; }
+.chip:disabled { opacity: .4; cursor: default; }
+.active { display: flex; flex-wrap: wrap; gap: 6px; }
+.parts { padding-top: 14px; }
+.parts h2 { margin: 0 0 8px; font-size: 14px; font-weight: 700; }
+.pgrid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
+.pbtn { display: grid; gap: 1px; justify-items: center; text-align: center; padding: 9px 4px 8px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font: 700 12.5px/1.3 var(--f-body); cursor: pointer; }
+.pbtn small { font-weight: 500; font-size: 11px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.pbtn[aria-pressed="true"] { background: var(--lime); border-color: var(--lime); color: #233300; }
+.pbtn[aria-pressed="true"] small { color: #233300; }
+.pbtn:disabled { opacity: .45; cursor: default; }
+.pbtn:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+.pclear { border: 0; background: var(--lime); color: #233300; font: 700 12px/1 var(--f-body); padding: 4px 8px; border-radius: 999px; cursor: pointer; margin-left: 6px; }
+.sels { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }
+.sel { display: flex; align-items: center; gap: 6px; min-width: 0; border: 1px solid var(--line); background: var(--surface); border-radius: 10px; padding: 0 0 0 10px; }
+.sel span { flex: none; font-size: 11.5px; font-weight: 700; color: var(--muted); }
+.sel select { min-width: 0; flex: 1; border: 0; background: transparent; color: var(--ink); font: 700 13px/1 var(--f-body); padding: 9px 6px 9px 0; }
+.sel:focus-within { outline: 3px solid var(--blue); outline-offset: 1px; }
+.mlabel { font-size: 12px; color: var(--muted); padding: 2px 8px; border-radius: 6px; background: var(--none-bg); }
+.chips.q { margin-top: 6px; align-items: center; }
+.chips.q .lbl { flex: none; font-size: 12px; font-weight: 700; color: var(--muted); padding-right: 2px; }
+.chips.q .chip { padding: 7px 12px; font-size: 12.5px; }
+.chip[aria-pressed="true"].qc { background: var(--blue); border-color: var(--blue); color: #fff; }
+.qb { flex: none; font-size: 11.5px; font-weight: 700; padding: 2px 8px; border-radius: 6px; border: 1px solid var(--blue); color: var(--blue); }
+.chip { flex: none; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font: 700 13px/1 var(--f-body); padding: 9px 14px; border-radius: 999px; cursor: pointer; }
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.chip:focus-visible, .card:focus-visible, .btn:focus-visible, .close:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+.meta-line { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-top: 8px; font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+/* カード */
+body { padding-bottom: env(safe-area-inset-bottom, 0px); }
+.startog { display: inline-flex; align-items: center; gap: 5px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font: 700 12.5px/1 var(--f-body); padding: 7px 11px; border-radius: 999px; cursor: pointer; }
+.startog svg { width: 15px; height: 15px; fill: none; stroke: var(--star); stroke-width: 2; stroke-linejoin: round; }
+.startog b { font-variant-numeric: tabular-nums; }
+.startog i { font-style: normal; color: var(--star); font-size: 14px; }
+.startog[aria-pressed="true"] { background: var(--star-bg); border-color: var(--star); }
+.startog[aria-pressed="true"] svg { fill: var(--star); }
+.startog:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+.feed li { position: relative; }
+.feed .card { padding-right: 16px; }
+.feed .foot { padding-right: 44px; }
+.clip { position: absolute; right: 10px; bottom: 10px; width: 40px; height: 40px; display: grid; place-items: center; border: 0; border-radius: 12px; background: transparent; color: var(--muted); cursor: pointer; }
+.clip svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linejoin: round; }
+.clip[aria-pressed="true"] { color: var(--star); }
+.clip[aria-pressed="true"] svg { fill: currentColor; }
+.clip:focus-visible, .tab:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+.btn.clipbtn { border: 1px solid var(--blue); background: transparent; color: var(--blue); font: 700 14.5px/1 var(--f-body); cursor: pointer; }
+.btn.clipbtn[aria-pressed="true"] { background: var(--star-bg); border-color: var(--star); color: var(--ink); }
+.clips-head { padding-top: 18px; display: grid; gap: 4px; }
+.clips-head h1 { margin: 0; font-size: 20px; font-weight: 900; }
+.clips-head p { margin: 0; font-size: 13px; color: var(--muted); }
+.tabbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 6; display: grid; grid-template-columns: 1fr 1fr; background: var(--surface); border-top: 1px solid var(--line); padding: 6px max(16px, env(safe-area-inset-right, 0px)) calc(6px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
+.tab { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 6px 0; font-size: 11.5px; font-weight: 700; color: var(--muted); text-decoration: none; position: relative; }
+.tab svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linejoin: round; }
+.tab[aria-current="page"] { color: var(--blue); }
+.tab[aria-current="page"] svg { fill: currentColor; }
+.badge { position: absolute; top: 2px; left: calc(50% + 8px); min-width: 18px; height: 18px; padding: 0 5px; border-radius: 9px; background: var(--lime); color: #233300; font-size: 11px; line-height: 18px; text-align: center; font-variant-numeric: tabular-nums; }
+.badge.zero { display: none; }
+.site-foot { border-top: 1px solid var(--line); background: var(--surface); }
+.site-foot .wrap { padding-block: 18px 24px; display: grid; gap: 8px; font-size: 12.5px; color: var(--muted); }
+.site-foot nav { display: flex; flex-wrap: wrap; gap: 6px 16px; }
+.site-foot a { color: var(--ink); text-decoration: none; font-weight: 700; }
+.site-foot a:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+.feed { list-style: none; margin: 0; padding: 14px 0 8px; display: grid; gap: 12px; }
+.card { display: grid; gap: 10px; width: 100%; text-align: left; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 14px 16px 14px; box-shadow: var(--shadow); color: inherit; font: inherit; cursor: pointer; }
+.card:active { transform: scale(.995); }
+.who { display: flex; flex-wrap: wrap; row-gap: 4px; align-items: center; gap: 8px; min-width: 0; font-size: 12.5px; color: var(--muted); }
+.kind { flex: none; font-weight: 700; font-size: 12px; padding: 3px 9px; border-radius: 6px; letter-spacing: .02em; }
+.kind.sns { background: var(--lime); color: #2A3D00; }
+.kind.hosp { background: var(--k-hosp); color: var(--k-hosp-ink); }
+.kind.news { background: var(--k-news); color: var(--k-news-ink); }
+.kind.comp { background: var(--k-comp); color: var(--k-comp-ink); }
+.kind.pub { background: var(--k-pub); color: var(--k-pub-ink); }
+.kind.paper { background: var(--k-paper); color: var(--k-paper-ink); }
+.who span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.who time { margin-left: auto; flex: none; font-variant-numeric: tabular-nums; }
+.head { margin: 0; font-weight: 900; font-size: 19px; line-height: 1.5; letter-spacing: .01em; text-wrap: balance; }
+.src { margin: -6px 0 0; font-size: 12.5px; color: var(--muted); }
+.head q { quotes: "「" "」"; }
+.foot { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.tie { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 700; padding: 4px 9px; border-radius: 999px; background: var(--tie-bg); color: var(--tie-ink); }
+.tie i { width: 7px; height: 7px; border-radius: 50%; background: var(--tie); }
+.tie.none { background: var(--none-bg); color: var(--muted); font-weight: 500; }
+.tie.none i { background: var(--muted); opacity: .5; }
+.tag { font-size: 12px; color: var(--muted); }
+.tag::before { content: "#"; opacity: .6; }
+.empty { padding: 32px 0; text-align: center; color: var(--muted); }
+
+/* 掲載ルール */
+.rules { margin: 16px 0 32px; padding: 16px; border-radius: 14px; background: var(--surface); border: 1px solid var(--line); }
+.rules .method { margin: 0 0 16px; padding-left: 1.2em; display: grid; gap: 6px; font-size: 13px; color: var(--muted); }
+.rules .method b { color: var(--ink); }
+.rules .about { margin: 0 0 16px; font-size: 13px; color: var(--muted); line-height: 1.75; }
+.rules h2 { margin: 0 0 8px; font-size: 15px; }
+.rules ul { margin: 0; padding-left: 1.2em; display: grid; gap: 6px; font-size: 13px; color: var(--muted); }
+
+/* 詳細シート */
+dialog { width: 100%; max-width: 560px; margin: auto auto 0; border: 0; padding: 0; border-radius: 20px 20px 0 0; background: var(--surface); color: var(--ink); max-height: 88vh; }
+dialog::backdrop { background: rgba(10,22,36,.45); }
+.sheet { padding: 10px max(18px, env(safe-area-inset-right, 0px)) calc(20px + env(safe-area-inset-bottom, 0px)) max(18px, env(safe-area-inset-left, 0px)); display: grid; gap: 14px; }
+.grip { width: 40px; height: 4px; border-radius: 2px; background: var(--line); margin: 0 auto 2px; }
+.sheet .head { font-size: 21px; }
+.close { justify-self: end; border: 0; background: var(--none-bg); color: var(--ink); font: 700 13px/1 var(--f-body); padding: 8px 12px; border-radius: 999px; cursor: pointer; margin-top: -30px; }
+.box { border-radius: 12px; padding: 12px 14px; background: var(--bg); display: grid; gap: 4px; }
+.box small { font-size: 12px; font-weight: 700; color: var(--muted); }
+.box p { margin: 0; font-size: 14px; }
+.box.t { background: var(--tie-bg); }
+.box.t small, .box.t p { color: var(--tie-ink); }
+.btns { display: grid; gap: 8px; }
+.btn { display: flex; justify-content: center; align-items: center; gap: 6px; padding: 13px; border-radius: 12px; font-weight: 700; font-size: 14.5px; text-decoration: none; }
+.btn.main { background: var(--blue); color: #fff; }
+.btn.sub { background: var(--blue-pale); color: var(--blue); }
+.note { margin: 0; font-size: 12px; color: var(--muted); }
+@media (prefers-reduced-motion: reduce) { .card:active { transform: none; } }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brandrow">
+      <div class="logo"><b aria-hidden="true"></b><span>Health Clip</span></div>
+      <span class="kana">ヘルスクリップ</span>
+    </div>
+    <p class="catch">気になる健康情報を、まとめてチェック。</p>
+  </div>
+</header>
+
+<nav class="filters" id="filters" aria-label="話題の絞り込み">
+  <div class="wrap">
+    <div class="ftabs" role="tablist" aria-label="探し方">
+      <button type="button" role="tab" data-tab="theme">健康テーマ</button>
+      <button type="button" role="tab" data-tab="part">からだの部位</button>
+      <button type="button" role="tab" data-tab="qual">専門分野・資格</button>
+    </div>
+    <div class="panel" id="panel" role="tabpanel"></div>
+    <div class="meta-line"><button class="startog" type="button" id="startog" aria-pressed="false"></button><span class="active" id="active" aria-live="polite"></span></div>
+  </div>
+</nav>
+
+<main class="wrap">
+  <ul class="feed" id="feed"></ul>
+  <section class="rules" id="rules" aria-labelledby="rules-h">
+    <h2>サイト概要</h2>
+    <p class="about">ネットで話題の「身体によいと言われるもの」を幅広く集め、テーマや身体の部位、専門分野・資格などから探しやすく整理。気になる健康情報を効率よく見つけ、興味のある記事はクリップして保存。あとからいつでも見返せるサイトです。</p>
+    <h2>収集方法</h2>
+    <ul class="method">
+      <li><b>対象</b>：ネットで公開された、身体によいと言われる食べ物・飲み物・食べ方・サプリ・薬・生活習慣についての記事と投稿</li>
+      <li><b>収集元</b>：ニュースサイト・健康情報サイト・医療機関のブログ・企業のプレスリリース・公的機関や学会の発表・研究論文・SNSのまとめ（Togetter、Yahoo!リアルタイム検索「SNSのバズまとめ」）・YouTube</li>
+      <li><b>手順</b>：生成AIがキーワードで検索して記事を開き、掲載日・内容・販売やPRとの関係を確認したうえで、見出しと概要を作成します。</li>
+      <li><b>範囲</b>：原則として直近3か月以内に公開・更新された記事を対象にし、1回の収集で同じ媒体からは4件までにします。</li>
+      <li><b>頻度</b>：毎週月曜日に新着の記事を追加します。</li>
+      <li><b>収集できないもの</b>：X・Instagram・TikTokの投稿は直接収集できないため、まとめサイトを通じて収集します。Yahoo!ニュースの記事は、配信元媒体のサイトで内容を確認します。</li>
+      <li><b>確認体制</b>：見出し・概要・分類は生成AIが作成し、医師などの専門家による監修は受けていません。</li>
+    </ul>
+    <h2 id="rules-h">掲載ルール</h2>
+    <ul>
+      <li>Health Clipは、記事の内容の正誤を判定しません。</li>
+      <li>見出しは、発信元の記載をHealth Clipが短くまとめて表示します。</li>
+      <li>資格のタグは、記事に執筆者・監修者・解説者の資格が明記されている場合に限って表示します。医療機関の院長は医師として扱います。</li>
+      <li>販売・PRとの関係は、記事・サイト上の記載から確認できた内容のみを表示します。</li>
+      <li>Health Clipは、商品の購入ページへのリンクを掲載しません。</li>
+      <li>★を付けた記事は、ログインなしで閲覧中のブラウザに保存し、他の人には表示しません。別の端末・ブラウザには引き継げません。</li>
+      <li>収集日：2026年11月5日</li>
+      <li>XとInstagramの投稿は閲覧にログインが必要なため、試作版ではまとめサイト・YouTubeを通じて収集しています。</li>
+    </ul>
+  </section>
+</main>
+<footer class="site-foot"><div class="wrap">
+  <nav aria-label="サイト情報"><a href="about.html">運営者情報・お問い合わせ</a><a href="disclaimer.html">免責事項</a><a href="privacy.html">プライバシーポリシー</a></nav>
+  <small>© 2026 Health Clip</small>
+</div></footer>
+
+<dialog id="sheet" aria-labelledby="s-head">
+  <div class="sheet" id="sheet-body"></div>
+</dialog>
+
+<script>
+const BETA = "https://claude.ai/artifact/ESDsJ3vkDopDRqU963ZfMY";
+const KIND = {
+  hosp: "病院ブログ", news: "Yahoo!ニュース", sns: "SNSまとめ", yt: "YouTube", web: "ニュースサイト", comp: "比較サイト", corp: "企業サイト",
+  pub: "公的機関", paper: "研究論文", trade: "業界紙", media: "健康情報サイト"
+};
+const KIND_CLASS = { sns: "sns", yt: "sns", web: "news", hosp: "hosp", news: "news", comp: "comp", corp: "comp", pub: "pub", paper: "paper", trade: "news", media: "news" };
+
+/* d：並べ替え用の日付（不明は空） / dl：表示する日付 */
+const ITEMS = [
+  {"d": "2026-11-04", "dl": "2026年11月4日更新", "k": "hosp", "who": "鍼灸院のコラム（総合診療医が執筆）", "head": "目に良い食べ物の1位は、ブルーベリー", "note": "2位かぼちゃ、3位鮭、4位納豆、5位鶏レバーの順に紹介しています。", "tie": null, "c": ["目の疲れ・視力"], "m": "食べ物・飲み物", "q": ["医師"], "url": "https://lapisthree.jp/dr-akiyama/foods-to-prevent-eyestrain/"},
+  {"d": "2026-10-13", "dl": "2026年10月13日", "k": "corp", "who": "ロート製薬（PR TIMESのプレスリリース）", "head": "クロセチンなどが、遠くにピントを合わせる力を維持する", "note": "機能性表示食品「ロートV5 ビジョンパワー」を10月20日に発売すると発表しています。", "tie": "商品・サービスを販売：発信元のロート製薬が、機能性表示食品「ロートV5 ビジョンパワー」を販売しています。", "c": ["目の疲れ・視力"], "m": "サプリ", "q": [], "url": "https://prtimes.jp/main/html/rd/p/000000619.000044879.html"},
+  {"d": "2026-10-09", "dl": "2026年10月9日", "k": "corp", "who": "宮崎日日新聞社（PR TIMESのプレスリリース）", "head": "ルテイン・ゼアキサンチンが、目の黄斑色素量を高める", "note": "ルテイン10mg・ゼアキサンチン2mg配合の商品を2,470円で発売すると発表しています。", "tie": "商品・サービスを販売：発信元の宮崎日日新聞社が、機能性表示食品「目の健康＆頭の健康」サポートを通販で販売しています。", "c": ["目の疲れ・視力", "認知機能"], "m": "サプリ", "q": [], "url": "https://prtimes.jp/main/html/rd/p/000000003.000126615.html"},
+  {"d": "2026-10-25", "dl": "2026年10月25日更新", "k": "hosp", "who": "眼科クリニックのコラム（眼科専門医が執筆）", "head": "スマホ老眼は、20分ごとに6m先を20秒見て防ぐ", "note": "画面との距離は、スマホで30cm以上、PCで50cm以上を目安にするよう記載しています。", "tie": null, "c": ["目の疲れ・視力"], "m": "生活習慣", "q": ["医師"], "url": "https://kishimoto-eye.com/news/?p=2228"},
+  {"d": "2026-09-24", "dl": "2026年9月24日更新", "k": "hosp", "who": "眼科クリニックのコラム（眼科専門医が監修）", "head": "ルテインやアントシアニンが、眼精疲労の予防につながる", "note": "ルテインは小松菜・モロヘイヤ、アントシアニンはブルーベリー・ナスから摂れると紹介しています。", "tie": null, "c": ["目の疲れ・視力"], "m": "食べ物・飲み物", "q": ["医師"], "url": "https://gen-gen-cocoro-eye.jp/symptoms/eye-strain-cause/"},
+  {"d": "2025-06-07", "dl": "2025年6月7日", "k": "web", "who": "サライ.jp（眼科専門医の著書を紹介）", "head": "目の健康には、ブルーベリー以外に赤身魚やそばも良い", "note": "サプリは食事を補う手段とし、コーヒーは1日3杯以内を目安にすると紹介しています。", "tie": "その他：記事が、解説する眼科専門医の著書を定価付きで紹介しています。", "c": ["目の疲れ・視力"], "m": "食べ物・飲み物", "q": ["医師"], "url": "https://serai.jp/health/1227640"},
+  {"d": "2026-10-08", "dl": "2026年10月8日更新", "k": "hosp", "who": "歯科医院のコラム", "head": "緑黄色野菜・青魚・緑茶が、歯周病予防に役立つ", "note": "緑茶のカテキンが抗酸化・抗炎症作用を持ち、歯ぐきの健康を支えると記載しています。", "tie": null, "c": ["歯・歯ぐき"], "m": "食べ物・飲み物", "q": [], "url": "https://nakayama-dc.info/colum-37/"},
+  {"d": "2026-10-08", "dl": "2026年10月8日", "k": "hosp", "who": "歯科医院のコラム", "head": "ガムの虫歯予防は、キシリトールより唾液の働きが中心", "note": "2024年の研究のまとめでは、キシリトールの効果が明確に確認できなかったと紹介しています。", "tie": null, "c": ["歯・歯ぐき"], "m": "食べ物・飲み物", "q": [], "url": "https://okamoto-dc.jp/news/health/%E3%82%AC%E3%83%A0%E3%81%A8%E3%81%AE%E4%B8%8A%E6%89%8B%E3%81%AA%E4%BB%98%E3%81%8D%E5%90%88%E3%81%84%E6%96%B9/"},
+  {"d": "2026-10-15", "dl": "2026年10月15日", "k": "sns", "who": "Togetter（歯科医師の投稿を含む）", "head": "洗口液コンクールFは、虫歯予防を目的に使うものではない", "note": "歯科医師の投稿として、フッ化物配合の歯磨き粉を1日2回使うよう勧める声を紹介しています。", "tie": "購入ページへのリンク：まとめサイトが、関連商品のアフィリエイトリンクを掲載しています。", "c": ["歯・歯ぐき"], "m": "生活習慣", "q": ["歯科医師"], "url": "https://togetter.com/li/2758053"},
+  {"d": "2026-08-20", "dl": "2026年8月20日", "k": "media", "who": "口臭対策の情報サイト（歯科衛生士が監修）", "head": "口臭対策の飲み物は、まず水を選ぶ", "note": "ニンニク・ニラやアルコール・加糖飲料を、口臭を悪化させる飲食物として紹介しています。", "tie": "購入ページへのリンク：記事が、口臭予防歯みがき「美息美人」の販売ページへのリンクを掲載しています。", "c": ["口臭"], "m": "食べ物・飲み物", "q": ["その他の資格"], "url": "https://biiki.ueb-a.com/?p=6463"},
+  {"d": "2026-10-05", "dl": "2026年10月5日更新", "k": "corp", "who": "歯科技工所（株式会社シケン）のコラム", "head": "リンゴやパイナップルなど7つの飲食物が、口臭対策になる", "note": "パイナップル・キウイは、食後に舌の上で約30秒転がす方法を紹介しています。", "tie": null, "c": ["口臭"], "m": "食べ方・レシピ", "q": [], "url": "https://www.shiken-jp.com/column/bad-breath-measures-food/"},
+  {"d": "2026-10-15", "dl": "2026年10月15日", "k": "media", "who": "beautyまとめ（管理栄養士が解説）", "head": "極端な油抜きは、肌の乾燥の原因になる", "note": "かぼちゃ・にんじんなどをオイルで炒めると、ビタミンA・Eの吸収率が上がると紹介しています。", "tie": "その他：記事が、日清オイリオの植物油『ヘルシークリア』をおすすめとして紹介しています。", "c": ["肌の乾燥・しみ"], "m": "食べ方・レシピ", "q": ["管理栄養士"], "url": "https://www.beauty-matome.net/beauty/diet/syokujideoil.html/"},
+  {"d": "2026-10-13", "dl": "2026年10月13日", "k": "web", "who": "TRILL（皮膚科医が解説）", "head": "シミ予防には、ビタミンCを少量ずつ毎日摂る", "note": "ビタミンCの摂取に、日焼け止め・帽子・日傘による紫外線対策を組み合わせるよう記載しています。", "tie": null, "c": ["肌の乾燥・しみ"], "m": "食べ物・飲み物", "q": ["医師"], "url": "https://trilltrill.jp/articles/4645050"},
+  {"d": "2026-09-02", "dl": "2026年9月2日", "k": "hosp", "who": "美容皮膚科クリニックのブログ（形成外科専門医が執筆）", "head": "食べ物だけでは、できてしまったシミは消えない", "note": "ビタミンC・E、βカロテン、リコピンなどを含む食品を、シミ対策として紹介しています。", "tie": "商品・サービスを販売：発信元のクリニックが、ピコレーザーなど自由診療のシミ取り治療を提供しています。", "c": ["肌の乾燥・しみ"], "m": "食べ物・飲み物", "q": ["医師"], "url": "https://www.kenbishin.net/news/shimitori105/"},
+  {"d": "2026-08-20", "dl": "2026年8月20日更新", "k": "hosp", "who": "皮膚科クリニックのコラム（医師が監修）", "head": "ビタミンC・Eやリコピンが、紫外線によるシミを防ぐ", "note": "セロリ・パセリ・柑橘類などを挙げ、食べた直後は紫外線を避けるよう記載しています。", "tie": "商品・サービスを販売：発信元のクリニックが、シミ取りレーザー（11,000円から）など自費のシミ治療を提供しています。", "c": ["肌の乾燥・しみ"], "m": "食べ物・飲み物", "q": ["医師"], "url": "https://ic-clinic-tokyo.com/column/column-uv-spots-prevention-food/"},
+  {"d": "2025-09-26", "dl": "2025年9月26日", "k": "hosp", "who": "内科クリニックのコラム（院長が監修）", "head": "梨・柿や秋鮭などの秋の食材が、肌の乾燥を防ぐ", "note": "白きくらげは、薬膳で「食べるヒアルロン酸」と呼ばれると紹介しています。", "tie": null, "c": ["肌の乾燥・しみ"], "m": "食べ物・飲み物", "q": ["医師"], "url": "https://kaji-clinic.com/archives/2488"},
+  {"d": "2026-10-13", "dl": "2026年10月13日", "k": "hosp", "who": "皮膚科クリニックのコラム（医師が監修）", "head": "秋の抜け毛対策には、タンパク質・亜鉛・鉄を摂る", "note": "秋の抜け毛は1日100〜150本程度で、200本を超えたら受診を検討するよう記載しています。", "tie": null, "c": ["抜け毛・白髪"], "m": "食べ物・飲み物", "q": ["医師"], "url": "https://ic-clinic-shinjuku.com/column-autumn-hair-loss-reasons/"},
+  {"d": "2026-09-09", "dl": "2026年9月9日更新", "k": "corp", "who": "AGAオンライン診療サービスのコラム（医師が監修）", "head": "サンマ・柿・きのこなど秋の味覚で、育毛をケアできる", "note": "栗や銀杏は亜鉛を含み、髪のケラチン生成を支えると紹介しています。", "tie": "商品・サービスを販売：発信元が、AGA治療薬を処方するオンライン診療（月6,800円から）を提供しています。", "c": ["抜け毛・白髪"], "m": "食べ物・飲み物", "q": ["医師", "その他の資格"], "url": "https://sustaina.vitabrid.co.jp/agaclinic/a-autumn-hairloss/"},
+  {"d": "2026-09-12", "dl": "2026年9月12日", "k": "web", "who": "TRILL（管理栄養士が解説）", "head": "白髪が増えにくい人は、卵・魚・大豆製品を食べている", "note": "卵・魚・大豆製品を毎日すべて食べる必要はなく、毎食1品選ぶよう記載しています。", "tie": null, "c": ["抜け毛・白髪"], "m": "食べ物・飲み物", "q": ["管理栄養士"], "url": "https://trilltrill.jp/articles/4956575"},
+  {"d": "2026-09-17", "dl": "2026年9月17日更新", "k": "comp", "who": "白髪対策の情報サイト（シララボ）", "head": "飲む白髪染めでは、今ある白髪は黒くならない", "note": "今ある白髪には、ヘアカラー剤やヘアマニキュアなどの白髪染めを勧めると記載しています。", "tie": "購入ページへのリンク：サイトが、利尻ヘアカラートリートメントの購入リンクを掲載し、アフィリエイト収益を得ていると明記しています。", "c": ["抜け毛・白髪"], "m": "サプリ", "q": [], "url": "https://orienstella.jp/?p=15220"},
+  {"d": "2026-10-30", "dl": "2026年10月30日更新", "k": "comp", "who": "mybest（管理栄養士がおすすめを執筆）", "head": "白髪対策サプリは、タンパク質や亜鉛を含むものを選ぶ", "note": "タンパク質・亜鉛・ビタミンBの3分類で、白髪対策サプリのランキングを紹介しています。", "tie": "購入ページへのリンク：mybestが、Amazon・楽天市場などのアフィリエイトリンクを掲載し、PRを含むと明記しています。", "c": ["抜け毛・白髪"], "m": "サプリ", "q": ["管理栄養士"], "url": "https://my-best.com/19353"},
+  {"d": "2026-10-07", "dl": "2026年10月7日", "k": "corp", "who": "株式会社 明治（共同通信PRワイヤー配信）", "head": "MI-2乳酸菌は、高めのHbA1cの低下をサポートする", "note": "ヨーグルトドリンクの新フレーバーを10月13日に全国で発売すると発表しています。", "tie": "商品・サービスを販売：株式会社明治が、記事で扱うヨーグルトドリンクを販売しています。", "c": ["血糖値"], "m": "食べ物・飲み物", "q": [], "url": "https://kyodonewsprwire.jp/release/202610057250"},
+  {"d": "2026-10-22", "dl": "2026年10月22日", "k": "corp", "who": "ハウス食品グループ本社（PR TIMES）", "head": "サラシノールは、食後の血糖値の上昇を抑える", "note": "肝機能酵素値と食後血糖値の2つの機能性を表示したサプリを10月26日に発売すると発表しています。", "tie": "商品・サービスを販売：ハウス食品グループ（販売はハウスウェルネスフーズ）が、記事で扱うサプリを販売しています。", "c": ["血糖値", "肝機能"], "m": "サプリ", "q": [], "url": "https://prtimes.jp/main/html/rd/p/000000694.000036263.html"},
+  {"d": "2026-10-29", "dl": "2026年10月29日", "k": "corp", "who": "Morus株式会社（PR TIMES）", "head": "カイコ由来イミノシュガーは、食後血糖値の上昇をおだやかにする", "note": "提携医療機関と公式ストアで先行予約を受け付け、11月13日に発売すると発表しています。", "tie": "商品・サービスを販売：Morus株式会社が、記事で扱うサプリを販売しています。", "c": ["血糖値"], "m": "サプリ", "q": [], "url": "https://prtimes.jp/main/html/rd/p/000000037.000091970.html"},
+  {"d": "2026-08-15", "dl": "2026年8月15日更新", "k": "web", "who": "PRESIDENT Online（医師が解説）", "head": "キノコは、糖の吸収をブロックする食物繊維の塊", "note": "キノコを味噌汁やスープに加え、主食を玄米やもち麦に替える方法を紹介しています。", "tie": "その他：記事は解説者の著書の一部を再編集したもので、著書の購入リンクを掲載しています。", "c": ["血糖値"], "m": "食べ物・飲み物", "q": ["医師"], "url": "https://president.jp/articles/-/117063"},
+  {"d": "2026-10-25", "dl": "2026年10月25日", "k": "hosp", "who": "四谷内科・内視鏡クリニック（糖尿病専門医が解説）", "head": "もち麦のβ-グルカンは、血糖値の上昇を抑える", "note": "もち麦の目安量を毎食30〜50gとし、朝食で食べる方法を紹介しています。", "tie": null, "c": ["血糖値"], "m": "食べ物・飲み物", "q": ["医師"], "url": "https://www.yotsuya-naishikyo.com/diabetes-lab/glutinous-grain/"},
+  {"d": "2026-09-17", "dl": "2026年9月17日", "k": "corp", "who": "株式会社 明治", "head": "カカオフラバノールは、高めの血圧を下げ、HDLを増やす", "note": "高カカオチョコレートを機能性表示食品として刷新し、9月29日に発売すると発表しています。", "tie": "商品・サービスを販売：株式会社明治が、記事で扱うチョコレートを販売しています。", "c": ["血圧", "コレステロール・中性脂肪"], "m": "食べ物・飲み物", "q": [], "url": "https://www.meiji.co.jp/corporate/pressrelease/2026/09_07/"},
+  {"d": "2026-09-16", "dl": "2026年9月16日", "k": "hosp", "who": "葛西よこやま内科・呼吸器内科クリニック（総合内科専門医が解説）", "head": "青魚のEPA・DHAは、中性脂肪を下げる方向に働く", "note": "いわし・さば・さんまなどを挙げ、サプリは処方薬の代わりにならないと記載しています。", "tie": null, "c": ["コレステロール・中性脂肪"], "m": "食べ物・飲み物", "q": ["医師"], "url": "https://www.kasai-yokoyama.com/media/news/6199/"},
+  {"d": "2026-10-14", "dl": "2026年10月14日", "k": "media", "who": "NPO法人オール・アバウト・サイエンス・ジャパン（Nature掲載論文の解説）", "head": "腸内細菌がつくるペンタデカン酸は、LDLを下げる", "note": "マウス実験で、細菌の経口投与により動脈硬化が予防されたと紹介しています。", "tie": null, "c": ["コレステロール・中性脂肪"], "m": "サプリ", "q": [], "url": "https://aasj.jp/news/watch/29788"},
+  {"d": "2026-08-31", "dl": "2026年8月31日", "k": "trade", "who": "健康美容EXPOニュース（株式会社富士薬品の発表）", "head": "HMPAは、高めのLDLコレステロールを低下させる", "note": "HMPAとエラグ酸を配合したサプリを9月1日に2,678円で発売すると紹介しています。", "tie": "その他：記事は、株式会社富士薬品が販売する新商品の発表を紹介する内容です。", "c": ["コレステロール・中性脂肪", "体重・体脂肪"], "m": "サプリ", "q": [], "url": "https://news.e-expo.net/release/2026/08/260831.html/"},
+  {"d": "2026-08-11", "dl": "2026年8月11日", "k": "hosp", "who": "竹内内科小児科医院（院長が解説）", "head": "中性脂肪対策には、肉を魚に置き換える日を作るとよい", "note": "食後の中性脂肪は175mg/dL以上で高トリグリセライド血症と判定すると記載しています。", "tie": null, "c": ["コレステロール・中性脂肪"], "m": "食べ方・レシピ", "q": ["医師"], "url": "https://www.takeuchi-iin.jp/blog/triglycerides-health-check-2026/"},
+  {"d": "2026-09-01", "dl": "2026年9月1日", "k": "hosp", "who": "竹内内科小児科医院（院長が解説）", "head": "秋は血圧が上がり始めるため、家庭血圧の見直しが必要", "note": "食塩を1日6g未満に抑え、野菜・果物からカリウムをとる方法を紹介しています。", "tie": null, "c": ["血圧"], "m": "生活習慣", "q": ["医師"], "url": "https://www.takeuchi-iin.jp/blog/autumn-blood-pressure-rise-2026/"},
+  {"d": "2026-10-21", "dl": "2026年10月21日更新", "k": "comp", "who": "マイベスト（管理栄養士が選び方を監修）", "head": "血圧対策のお茶は、トクホの胡麻麦茶が1位", "note": "ゴマペプチドを配合した胡麻麦茶を、ランキングの1位として紹介しています。", "tie": "購入ページへのリンク：マイベストが、掲載商品のアフィリエイトリンクを掲載し、送客手数料を受け取っています。", "c": ["血圧"], "m": "食べ物・飲み物", "q": ["管理栄養士"], "url": "https://my-best.com/3665"},
+  {"d": "2026-09-22", "dl": "2026年9月22日", "k": "web", "who": "熊本日日新聞（共同通信配信）", "head": "野菜と果物を毎日あと1皿ずつ増やすとよい", "note": "厚生労働省が、高血圧予防の減塩とあわせて食生活の改善を呼びかけていると紹介しています。", "tie": null, "c": ["血圧"], "m": "食べ方・レシピ", "q": [], "url": "https://kumanichi.com/articles/2038475"},
+  {"d": "2026-09-13", "dl": "2026年9月13日", "k": "hosp", "who": "葛西よこやま内科・呼吸器内科クリニック（総合内科専門医が解説）", "head": "腎機能が保たれた高血圧の人には、カリウムが血圧管理に役立つ", "note": "進行した腎臓病の人や一部の降圧薬を使う人は、摂取前に確認が必要と記載しています。", "tie": null, "c": ["血圧"], "m": "食べ物・飲み物", "q": ["医師"], "url": "https://www.kasai-yokoyama.com/media/news/6192/"},
+  {"d": "2026-08-02", "dl": "2026年8月2日更新", "k": "hosp", "who": "アイシークリニック上野院（医師が監修）", "head": "鉄はビタミンCや動物性たんぱく質と一緒にとると吸収が高まる", "note": "レバーは週1〜2回が目安とし、妊娠初期は控えるか少量にするよう記載しています。", "tie": null, "c": ["貧血"], "m": "食べ方・レシピ", "q": ["医師"], "url": "https://ic-clinic-ueno.com/column/iron-foods/"},
+  {"d": "2026-10-17", "dl": "2026年10月17日", "k": "trade", "who": "日本食糧新聞", "head": "鉄分入り牛乳は、コップ1杯で1日分の鉄分を補える", "note": "たんぱく質10gと1日分の鉄分をとれる森永乳業の乳飲料を、9月8日発売と紹介しています。", "tie": "その他：記事は、森永乳業が販売する新商品を紹介する内容です。", "c": ["貧血"], "m": "食べ物・飲み物", "q": [], "url": "https://news.nissyoku.co.jp/foodsnews/260903-19"},
+  {"d": "2026-10-21", "dl": "2026年10月21日更新", "k": "hosp", "who": "上野御徒町こころみクリニック（血液専門医が監修）", "head": "鉄欠乏性貧血の治療は、鉄剤の内服が基本", "note": "動物性のヘム鉄は吸収がよく、緑茶・紅茶のタンニンは吸収に影響しうると記載しています。", "tie": null, "c": ["貧血"], "m": "薬・治療", "q": ["医師"], "url": "https://ueno-okachimachi-cocoromi-cl.jp/knowledge/ida/"},
+  {"d": "2026-09-02", "dl": "2026年9月2日", "k": "web", "who": "スポーツナビ（あすけんの管理栄養士が執筆）", "head": "肝機能の改善には、野菜中心の食事と無糖の飲み物がよい", "note": "飲酒は純アルコール1日20g程度を目安とし、週1日以上の休肝日を勧めると記載しています。", "tie": null, "c": ["肝機能"], "m": "食べ方・レシピ", "q": ["管理栄養士"], "url": "https://sports.yahoo.co.jp/column/detail/2026090100010-spnavido"},
+  {"d": "2026-08-06", "dl": "2026年8月6日", "k": "hosp", "who": "明石やまだ内科歯科クリニック（消化器病専門医が解説）", "head": "脂肪肝は、食事の見直しと減量で改善する", "note": "コーヒーを1日2〜3杯とり、青魚を週2〜3回食べる方法を紹介しています。", "tie": null, "c": ["肝機能"], "m": "食べ方・レシピ", "q": ["医師"], "url": "https://akashiyamada.com/blog/5443"},
+  {"d": "2026-10-30", "dl": "2026年10月30日", "k": "hosp", "who": "梅田北オンライン診療クリニック（院長が解説）", "head": "脂肪肝対策では、果物は丸ごと食べ、果汁など液体の糖を控える", "note": "100%果汁や野菜ジュースも控え、果物は1日200g程度を丸ごと食べるよう記載しています。", "tie": null, "c": ["肝機能"], "m": "食べ方・レシピ", "q": ["医師"], "url": "https://h-ohp.com/column/13766/"},
+  {"d": "2026-06-22", "dl": "2026年6月22日", "k": "sns", "who": "Togetter（Xの投稿まとめ）", "head": "ジュースとお菓子をやめると、肌が綺麗になり痩せた", "note": "低血糖の改善のため、納豆・サバ・もずく・トマトなどを中心に食べたと紹介しています。", "tie": "購入ページへのリンク：まとめサイトが、関連商品のアフィリエイトリンクを掲載しています。", "c": ["血糖値", "体重・体脂肪"], "m": "食べ方・レシピ", "q": [], "url": "https://togetter.com/li/2712330"},
+  {"d": "2026-09-25", "dl": "2026年9月25日", "k": "hosp", "who": "内科クリニックのブログ（院長が執筆）", "head": "プロバイオティクスと食物繊維で腸内環境を整える", "note": "ヨーグルトは1日100〜200g、食物繊維は1日20〜25gを目安にするよう紹介しています。", "tie": null, "c": ["腸内環境"], "m": "食べ物・飲み物", "q": ["医師"], "url": "https://tanaka-naika-cl.jp/blog/post-3314/"},
+  {"d": "2026-09-21", "dl": "2026年9月21日", "k": "hosp", "who": "胃腸内科クリニックの院長ブログ", "head": "ヨーグルトの菌は腸に定着せず、水溶性食物繊維が大切", "note": "市販ヨーグルト1個の菌数は腸内細菌全体の0.01%以下にすぎないと記載しています。", "tie": "購入ページへのリンク：記事下部に、外部の通販サイトへつながる「ヨーグルト」のバナーがあります。", "c": ["腸内環境"], "m": "食べ物・飲み物", "q": ["医師"], "url": "https://www.tamapla-ichounaika.com/blog/director_blog/post-45483/"},
+  {"d": "2026-10-12", "dl": "2026年10月12日", "k": "hosp", "who": "胃腸内科クリニックの院長ブログ", "head": "腸のバリアを整えることが脳を守ることにつながる", "note": "発酵性食物繊維を毎日1品、納豆と卵の朝食、青魚の缶詰を週数回とるよう紹介しています。", "tie": "購入ページへのリンク：記事下部に、院長が監修した乳酸菌製品「ラクエイド」の通販サイトへのバナーがあります。", "c": ["腸内環境", "認知機能"], "m": "食べ物・飲み物", "q": ["医師"], "url": "https://www.tamapla-ichounaika.com/blog/director_blog/post-45714/"},
+  {"d": "2026-09-26", "dl": "2026年9月26日", "k": "hosp", "who": "内科クリニックのブログ（消化器病専門医が執筆）", "head": "発酵食品は腸活の心強い味方になる", "note": "無糖ヨーグルトとバナナの朝食、みそ汁1杯、納豆やぬか漬け1品の追加を紹介しています。", "tie": null, "c": ["腸内環境", "便秘"], "m": "食べ物・飲み物", "q": ["医師"], "url": "https://saito-naika-cl.com/blog/post-2504/"},
+  {"d": "2026-10-18", "dl": "2026年10月18日", "k": "corp", "who": "TRADARROWS ONLINE STORE（飲料の通販サイト）", "head": "腸活には菌を届けることと育てることの両方が必要", "note": "発酵食品と食物繊維・オリゴ糖を組み合わせるシンバイオティクスを紹介しています。", "tie": "商品・サービスを販売：TRADARROWSが、和漢素材を配合した飲料「e:FORCE」を販売し、記事内に商品ページへのリンクを掲載しています。", "c": ["腸内環境"], "m": "食べ物・飲み物", "q": [], "url": "https://shop.tradarrows.co.jp/blogs/news/20261018"},
+  {"d": "2026-10-20", "dl": "2026年10月20日", "k": "corp", "who": "タイヨーラボのプレスリリース（PR TIMES）", "head": "グアーガム分解物が便通と腸内環境を改善する", "note": "便秘気味の方のお通じを改善する機能などを表示した機能性表示食品の発売を発表しています。", "tie": "商品・サービスを販売：タイヨーラボが、機能性表示食品「サンファイバー」を2026年10月20日に発売しています。", "c": ["便秘", "腸内環境"], "m": "サプリ", "q": [], "url": "https://prtimes.jp/main/html/rd/p/000000007.000183411.html"},
+  {"d": "2026-11-01", "dl": "2026年11月1日", "k": "web", "who": "介護ポストセブン（医師が解説）", "head": "ヨーグルトやサプリのまとめ摂りは腸活に逆効果", "note": "1日1.5Lの水分、1日6000〜8000歩の歩行、就寝3時間前までの食事を勧めています。", "tie": null, "c": ["腸内環境", "便秘"], "m": "生活習慣", "q": ["医師"], "url": "https://kaigo-postseven.com/230898"},
+  {"d": "2026-10-09", "dl": "2026年10月9日更新", "k": "corp", "who": "オリゴのおかげ（塩水港精糖、医師が監修）", "head": "朝のキウイとオリゴ糖が排便リズムを整える", "note": "英国栄養士会がキウイ1日2〜3個の継続摂取で便通が改善すると示したと紹介しています。", "tie": "商品・サービスを販売：塩水港精糖が、オリゴ糖の甘味料「オリゴのおかげ」を製造販売しています。", "c": ["便秘", "腸内環境"], "m": "食べ物・飲み物", "q": ["医師"], "url": "https://www.oligo.jp/columns/columns-628/"},
+  {"d": "2026-10-28", "dl": "2026年10月28日更新", "k": "media", "who": "ユビーウェルネス（Ubie）", "head": "オートミールは食物繊維を補える腸活の食材", "note": "オートミール30gで食物繊維約2.8gを補えるとして、主食の一部の置き換えを紹介しています。", "tie": null, "c": ["便秘", "腸内環境"], "m": "食べ物・飲み物", "q": [], "url": "https://ubie.app/wellness/article/0n0vum4x81x"},
+  {"d": "2026-10-13", "dl": "2026年10月13日", "k": "corp", "who": "株式会社明治のプレスリリース", "head": "LB81乳酸菌が腸内細菌のバランスを整える", "note": "特定保健用食品の飲むヨーグルトの新しい味を2026年10月20日に全国で発売すると発表しています。", "tie": "商品・サービスを販売：明治が、特定保健用食品「明治ブルガリアのむヨーグルト ピーチ風味LB81」を販売しています。", "c": ["腸内環境"], "m": "食べ物・飲み物", "q": [], "url": "https://www.meiji.co.jp/corporate/pressrelease/2026/10_07/"},
+  {"d": "2026-08-04", "dl": "2026年8月4日", "k": "web", "who": "ケアネット（HealthDay配信の医療ニュース）", "head": "抗炎症作用のある食事が認知症の予防に有効", "note": "スウェーデンの高齢者1,865人を平均8.4年追跡した研究を紹介しています。", "tie": null, "c": ["認知機能"], "m": "食べ方・レシピ", "q": [], "url": "https://www.carenet.com/news/general/hdn/63226"},
+  {"d": "2026-09-02", "dl": "2026年9月2日", "k": "web", "who": "ケアネット（医療ニュース）", "head": "深夜の夕食や朝食抜きは認知症リスクの上昇と関連する", "note": "LIFE研究の28万3,166例の解析で、深夜の夕食のハザード比が1.17だったと紹介しています。", "tie": null, "c": ["認知機能"], "m": "食べ方・レシピ", "q": [], "url": "https://www.carenet.com/news/general/carenet/63508"},
+  {"d": "2026-10-07", "dl": "2026年10月7日", "k": "web", "who": "メディカルドック（医師が解説）", "head": "コーヒーのカフェインは深い眠りを減らす", "note": "カフェインと睡眠中の脳活動を調べた32件の研究のまとめを紹介しています。", "tie": null, "c": ["睡眠"], "m": "食べ物・飲み物", "q": ["医師"], "url": "https://medicaldoc.jp/news/news-202610n1157/"},
+  {"d": "2026-10-15", "dl": "2026年10月15日", "k": "web", "who": "メディカルドック（医師が解説）", "head": "幼少期の砂糖制限で認知症の発症が約2〜3年遅い", "note": "英国の砂糖配給制を利用し、英国バイオバンクの6万4737人を調べた研究を紹介しています。", "tie": null, "c": ["認知機能"], "m": "食べ方・レシピ", "q": ["医師"], "url": "https://medicaldoc.jp/news/news-202610n1162/"},
+  {"d": "2026-08-24", "dl": "2026年8月24日", "k": "sns", "who": "Togetter", "head": "帯状疱疹ワクチンが認知症予防につながる", "note": "認知症予防の効果を理由に帯状疱疹ワクチンを接種したという投稿と反応を紹介しています。", "tie": "購入ページへのリンク：まとめサイトが、関連商品のアフィリエイトリンクを掲載しています。", "c": ["認知機能"], "m": "薬・治療", "q": [], "url": "https://togetter.com/li/2736775"},
+  {"d": "2026-11-04", "dl": "2026年11月4日", "k": "corp", "who": "ビタブリッドジャパンのプレスリリース（PR TIMES）", "head": "GABAが睡眠の質（眠りの深さ）の向上に役立つ", "note": "1日2粒でGABA100mgをとれる商品が、GABA区分で売上1位になったと発表しています。", "tie": "商品・サービスを販売：ビタブリッドジャパンが、機能性表示食品「デイリーGABA」を販売しています。", "c": ["睡眠", "ストレス・気分"], "m": "サプリ", "q": [], "url": "https://prtimes.jp/main/html/rd/p/000000145.000010318.html"},
+  {"d": "2026-10-29", "dl": "2026年10月29日更新", "k": "hosp", "who": "心療内科・精神科クリニックのブログ（医師が監修）", "head": "就寝の1〜2時間前の入浴が寝つきを整える", "note": "湯温41℃以下・湯につかる時間10分までを目安にするよう記載しています。", "tie": null, "c": ["睡眠"], "m": "生活習慣", "q": ["医師"], "url": "https://www.musashikosugi-cocoromi-cl.jp/bath-timing-for-sleep/"},
+  {"d": "2026-10-29", "dl": "2026年10月29日", "k": "web", "who": "プレジデントオンライン（獣医師・管理栄養士が解説）", "head": "カフェイン断ちで睡眠の質が変わる", "note": "カフェインを減らした週は平均睡眠時間が6時間31分から6時間43分に延びたと紹介しています。", "tie": null, "c": ["睡眠"], "m": "食べ物・飲み物", "q": ["管理栄養士", "その他の資格"], "url": "https://president.jp/articles/-/121040"},
+  {"d": "2026-10-27", "dl": "2026年10月27日", "k": "web", "who": "プレジデントオンライン（脳神経内科医が解説）", "head": "良い睡眠が認知症から脳を守る", "note": "脳の老廃物を排出するしくみが睡眠など日常生活の影響を受けると紹介しています。", "tie": null, "c": ["睡眠", "認知機能"], "m": "生活習慣", "q": ["医師"], "url": "https://president.jp/articles/-/120451"},
+  {"d": "2026-08-03", "dl": "2026年8月3日", "k": "corp", "who": "森永製菓のニュースリリース", "head": "ピセアタンノールを含む食品で睡眠の質が改善する可能性", "note": "ピセアタンノール10mg入り飲料の4週間摂取で中途覚醒時間が短縮したと発表しています。", "tie": "その他：森永製菓が、自社で進めるピセアタンノールの機能性研究の成果を発表しています。", "c": ["睡眠"], "m": "食べ物・飲み物", "q": [], "url": "https://www.morinaga.co.jp/company/newsrelease/detail.php?no=3174"},
+  {"d": "2026-10-19", "dl": "2026年10月19日", "k": "web", "who": "PRESIDENT Online（医師が解説）", "head": "地中海食などの抗炎症食は、疲労回復を支える", "note": "睡眠・抗炎症食・腸内環境・自律神経の4つで、エネルギーの回復を支えると紹介しています。", "tie": "その他：記事は、解説者の著書『科学でわかった疲労の正体』（SBクリエイティブ）の一部を再編集したものです。", "c": ["疲労"], "m": "食べ方・レシピ", "q": ["医師"], "url": "https://president.jp/articles/-/120286"},
+  {"d": "2026-08-22", "dl": "2026年8月22日", "k": "web", "who": "ダイヤモンド・オンライン（医師の著書を紹介）", "head": "老化を遅らせる一番の方法は、筋力トレーニング", "note": "筋肉の分解と構築のバランスを保てば、老化を遅らせられると紹介しています。", "tie": "その他：ダイヤモンド社書籍編集局が、自社刊行の書籍『筋肉が全て』を紹介する記事です。", "c": ["筋肉"], "m": "生活習慣", "q": ["医師"], "url": "https://diamond.jp/articles/-/394773"},
+  {"d": "2026-11-04", "dl": "2026年11月4日", "k": "web", "who": "OTONA SALONE（内科医が解説）", "head": "生姜紅茶は、体を内側から温める最強のドリンク", "note": "紅茶ポリフェノールがインフルエンザウイルスを無毒化するデータがあると紹介しています。", "tie": "その他：解説者の医師が、サーモスのブランド「＆ONDO」の新製品発表会に登壇した際の内容です。", "c": ["冷え", "免疫"], "m": "食べ物・飲み物", "q": ["医師"], "url": "https://otonasalone.jp/1202613/"},
+  {"d": "2026-09-26", "dl": "2026年9月26日更新", "k": "hosp", "who": "予防医療クリニックのコラム（院長の医師が解説）", "head": "プロテインは、運動後・起床直後・就寝前に飲むとよい", "note": "間食のお菓子をプロテインに置き換え、不足するたんぱく質を補うよう勧めています。", "tie": "商品・サービスを販売：AFRODE CLINICが、記事で紹介する自社開発のプロテインを販売しています。", "c": ["筋肉"], "m": "サプリ", "q": ["医師"], "url": "https://recovery-afrode-clinic.art/post/protein-drink-timing/"},
+  {"d": "2026-03-30", "dl": "2026年3月30日", "k": "hosp", "who": "内科・呼吸器内科クリニックのメディアサイト（医師・管理栄養士が監修）", "head": "冬が旬の根菜類などは、体を内側から温める", "note": "たんぱく質で筋肉量を維持し、体を温める食材をとるよう勧めています。", "tie": null, "c": ["冷え"], "m": "食べ物・飲み物", "q": ["医師", "管理栄養士"], "url": "https://www.kasai-yokoyama.com/media/news/2625/"},
+  {"d": "2026-10-15", "dl": "2026年10月15日", "k": "media", "who": "医師の個人ブログ（腎臓専門医が解説）", "head": "足のむくみの原因は、腎臓病だけではない", "note": "片脚か両脚か、急に出たかなど、むくみの変化を記録するよう勧めています。", "tie": null, "c": ["むくみ"], "m": "生活習慣", "q": ["医師"], "url": "https://crescent-life.com/kidney-basics-leg-edema/"},
+  {"d": "2026-08-17", "dl": "2026年8月17日", "k": "corp", "who": "訪問リハビリ事業者のブログ（作業療法士が執筆）", "head": "筋トレにたんぱく質を足すと、筋力の指標が上向く", "note": "筋肉量そのものは思ったほど増えないという、研究の限界も記載しています。", "tie": "商品・サービスを販売：株式会社Journey Rehabが、訪問自費リハビリを提供しています。", "c": ["筋肉"], "m": "生活習慣", "q": ["その他の資格"], "url": "https://www.journeyrehab.net/blog/sarcopenia-exercise-protein"},
+  {"d": "2026-09-17", "dl": "2026年9月17日更新", "k": "corp", "who": "タマチャンショップ（健康食品の通販サイト）", "head": "ダイエット中のプロテインは、目的別に飲む時間を変える", "note": "たんぱく質補給なら寝る前、ダイエット効率を高めたいなら朝を勧めています。", "tie": "商品・サービスを販売：タマチャンショップが、プロテイン商品を販売し、記事から商品一覧へ案内しています。", "c": ["体重・体脂肪", "筋肉"], "m": "サプリ", "q": [], "url": "https://tamachanshop.jp/column/protein-timing-for-diet/"},
+  {"d": "2026-10-20", "dl": "2026年10月20日", "k": "corp", "who": "らくのうマザーズ（乳製品メーカー）", "head": "低脂肪乳1杯で、不足しがちなカルシウムを補える", "note": "1日700mgのうち489mgしか摂れていないとして、200mlでの補給を勧めています。", "tie": "商品・サービスを販売：らくのうマザーズが、記事で紹介する「日本人に不足しがちな鉄とカルシウム低脂肪乳」を販売しています。", "c": ["骨"], "m": "食べ物・飲み物", "q": [], "url": "https://www.mothers.or.jp/newssingle/20261020"},
+  {"d": "2026-09-14", "dl": "2026年9月14日", "k": "corp", "who": "naturism 公式オンラインストア（管理薬剤師が監修）", "head": "ビタミンKは、骨形成を支える", "note": "成人の目安量を1日150µgとし、緑葉野菜・納豆からの摂取を紹介しています。", "tie": "その他：naturismが、サプリメントを販売する自社オンラインストアに記事を掲載しています。", "c": ["骨"], "m": "食べ物・飲み物", "q": ["薬剤師"], "url": "https://naturism-diet.com/blogs/%E7%BE%8E%E5%AE%B9-%E5%81%A5%E5%BA%B7%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%B9/vitamin-k-bone-blood-explained-2026-08-27"},
+  {"d": "2026-11-05", "dl": "2026年11月5日", "k": "corp", "who": "パーソナルジムのブログ", "head": "ふくらはぎを動かすと、冬の脚のむくみ対策になる", "note": "1時間に1回は立ち上がり、かかと上げを10〜15回行うよう勧めています。", "tie": "商品・サービスを販売：4C's GYMが、パーソナルトレーニングを提供しています。", "c": ["むくみ"], "m": "生活習慣", "q": [], "url": "https://www.4cs-gym.com/post/%E5%86%AC%E3%81%AE%E8%84%9A%E3%82%80%E3%81%8F%E3%81%BF%E5%AF%BE%E7%AD%965%E9%81%B8-%E5%8E%9F%E5%9B%A0%E3%81%A8%E4%BB%8A%E6%97%A5%E3%81%8B%E3%82%89%E3%81%A7%E3%81%8D%E3%82%8B%E8%A7%A3%E6%B6%88%E6%B3%95"},
+  {"d": "2026-10-28", "dl": "2026年10月28日", "k": "corp", "who": "アサヒグループ食品（ニュースリリース）", "head": "L-92乳酸菌は、健康な人の免疫機能の維持に役立つ", "note": "『免疫ピース＋』に花粉の機能表示を加え、11月2日に刷新すると発表しています。", "tie": "商品・サービスを販売：アサヒグループ食品が、「カルピス健康通販」で『免疫ピース＋』を販売しています。", "c": ["免疫"], "m": "サプリ", "q": [], "url": "https://www.asahi-gf.co.jp/company/newsrelease/2026/1028/"},
+  {"d": "2026-08-19", "dl": "2026年8月19日", "k": "corp", "who": "ヤクルト本社（PR TIMESのプレスリリース）", "head": "乳酸菌シロタ株は、健康な人の免疫機能維持に役立つ", "note": "シロタ株を400億個含む「ヤクルト免疫バランス」を10月5日に発売すると発表しています。", "tie": "商品・サービスを販売：ヤクルト本社が、機能性表示食品「ヤクルト免疫バランス」を販売しています。", "c": ["免疫", "腸内環境"], "m": "食べ物・飲み物", "q": [], "url": "https://prtimes.jp/main/html/rd/p/000000010.000158624.html"},
+  {"d": "2026-08-10", "dl": "2026年8月10日", "k": "corp", "who": "ウェルネス・コミュニケーションズ（PR TIMESのプレスリリース）", "head": "骨折予防には、骨密度検査で骨の状態を知ることが大切", "note": "骨の健康を保つセルフケアをまとめた健康啓発リーフレットの販売開始を発表しています。", "tie": "商品・サービスを販売：ウェルネス・コミュニケーションズが、記事で紹介するリーフレットを販売しています。", "c": ["骨"], "m": "生活習慣", "q": [], "url": "https://prtimes.jp/main/html/rd/p/000000046.000035419.html"},
+  {"d": "2026-08-20", "dl": "2026年8月20日更新", "k": "pub", "who": "古河市 健康づくり課（健康コラム）", "head": "骨粗しょう症予防には、カルシウムなどを積極的にとる", "note": "冬は1時間程度日光を浴びると、体内でビタミンDが生成されると記載しています。", "tie": null, "c": ["骨"], "m": "食べ物・飲み物", "q": [], "url": "https://www.city.ibaraki-koga.lg.jp/soshiki/kenko/1151/18345.html"},
+  {"d": "2026-08-06", "dl": "2026年8月6日更新", "k": "pub", "who": "HFNet「健康食品」の安全性・有効性情報（医薬基盤・健康・栄養研究所）", "head": "ビタミンDが感染症予防に効くといえる十分な情報はない", "note": "複数のメタ分析で、急性呼吸器感染症との関連が認められなかったと記載しています。", "tie": null, "c": ["免疫"], "m": "サプリ", "q": [], "url": "https://hfnet.nibn.go.jp/column/%E3%80%8C%E6%84%9F%E6%9F%93%E7%97%87%E4%BA%88%E9%98%B2%E3%81%AB%E3%83%93%E3%82%BF%E3%83%9F%E3%83%B3d%E3%81%8C%E5%8A%B9%E3%81%8F%E3%80%8D%E7%AD%89%E3%81%AE%E6%83%85%E5%A0%B1%E3%81%AB%E6%B3%A8%E6%84%8F/"},
+  {"d": "2026-10-21", "dl": "2026年10月21日", "k": "trade", "who": "健康産業新聞（特集）", "head": "深部体温が1℃下がると、免疫は3割以上低下する", "note": "冷え対策領域の機能性表示食品は240品で、今年23品が新たに受理されたと記載しています。", "tie": null, "c": ["冷え", "免疫"], "m": "サプリ", "q": [], "url": "https://www.kenko-media.com/health_idst/archives/23168"},
+  {"d": "2026-10-08", "dl": "2026年10月8日", "k": "sns", "who": "Togetter（Xの投稿まとめ）", "head": "大人のバンザイ寝は、巻き肩で疲労がたまっているサイン", "note": "子どものバンザイ寝との違いに、共感する声が集まったと紹介しています。", "tie": "購入ページへのリンク：まとめサイトが、関連商品のアフィリエイトリンクを掲載しています。", "c": ["疲労"], "m": "生活習慣", "q": [], "url": "https://togetter.com/li/2755563"},
+  {"d": "2026-09-12", "dl": "2026年9月12日", "k": "sns", "who": "Togetter（Xの投稿まとめ）", "head": "痩せない人は、実際より食事量を少なく申告している", "note": "1日1028kcalと申告した人が実際は2081kcalを食べていた研究を紹介しています。", "tie": "購入ページへのリンク：まとめサイトが、関連商品のアフィリエイトリンクを掲載しています。", "c": ["体重・体脂肪"], "m": "生活習慣", "q": [], "url": "https://togetter.com/li/2744639"},
+  {"d": "2026-09-17", "dl": "2026年9月17日", "k": "sns", "who": "Togetter（Xの投稿まとめ）", "head": "無印良品の新しいおやつで、たんぱく質や食物繊維がとれる", "note": "納豆や海苔のスナック、鶏むね肉のカルパスなど5種の発売を紹介しています。", "tie": "購入ページへのリンク：まとめサイトが、関連商品のアフィリエイトリンクを掲載しています。", "c": ["筋肉", "体重・体脂肪"], "m": "食べ物・飲み物", "q": [], "url": "https://togetter.com/li/2746815"},
+  {"d": "2026-10-05", "dl": "2026年10月5日", "k": "sns", "who": "Togetter（Xの投稿まとめ）", "head": "年を重ねたら、膝を守るためにダイエットする", "note": "年齢とともに関節への負担が増えるとして、共感する声を紹介しています。", "tie": "購入ページへのリンク：まとめサイトが、関連商品のアフィリエイトリンクを掲載しています。", "c": ["体重・体脂肪", "骨"], "m": "生活習慣", "q": [], "url": "https://togetter.com/li/2754460"},
+  {"d": "2026-10-10", "dl": "2026年10月10日", "k": "sns", "who": "Togetter", "head": "脂質を糖質より先に食べると、食後血糖の上昇が緩やかになる", "note": "京都大学のマウス研究の発表に対し、食べる順番を意識したいという反応が集まったと紹介しています。", "tie": "購入ページへのリンク：まとめサイトが、関連商品のアフィリエイトリンクを掲載しています。", "c": ["血糖値"], "m": "食べ方・レシピ", "q": [], "url": "https://togetter.com/li/2756548"},
+  {"d": "2026-09-13", "dl": "2026年9月13日", "k": "sns", "who": "Togetter", "head": "ルテインのグミサプリを大量に食べるのは心配だ", "note": "作業中にルテイングミを大量に食べる人を見た投稿に、摂りすぎを心配する声が集まったと紹介しています。", "tie": "購入ページへのリンク：まとめサイトが、関連商品のアフィリエイトリンクを掲載しています。", "c": ["目の疲れ・視力"], "m": "サプリ", "q": [], "url": "https://togetter.com/li/2744985"},
+  {"d": "2026-10-23", "dl": "2026年10月23日", "k": "sns", "who": "Togetter", "head": "約130Hzのハミングで、副鼻腔炎が改善する可能性がある", "note": "低い音で1時間ハミングした症例報告と、あくまで仮説だとする注意を紹介しています。", "tie": "購入ページへのリンク：まとめサイトが、関連商品のアフィリエイトリンクを掲載しています。", "c": [], "m": "生活習慣", "q": [], "url": "https://togetter.com/li/2761916"},
+  {"d": "2026-11-05", "dl": "2026年11月5日", "k": "sns", "who": "Yahoo!リアルタイム検索「SNSのバズまとめ」（AIによる要約）", "head": "シナモンは体を温めるスパイスだが、摂りすぎには注意", "note": "かぼちゃと合わせたレシピの投稿と、カシアとセイロンの違いや摂りすぎへの注意を紹介しています。", "tie": null, "c": ["冷え"], "m": "食べ物・飲み物", "q": [], "url": "https://search.yahoo.co.jp/realtime/search/matome/56fecaf30f054e50a36e6e8ec1063a88-1793834100"},
+  {"d": "2026-10-10", "dl": "2026年10月10日", "k": "sns", "who": "Yahoo!リアルタイム検索「SNSのバズまとめ」（AIによる要約）", "head": "オートミールの朝食は手軽で、血糖値管理やダイエットによい", "note": "レンチンやオーバーナイトオーツなどのアレンジと、膨らみすぎに戸惑う声を紹介しています。", "tie": null, "c": ["血糖値", "体重・体脂肪"], "m": "食べ方・レシピ", "q": [], "url": "https://search.yahoo.co.jp/realtime/search/matome/b86e8627266e4781903fae4d01e8a862-1791593700"},
+  {"d": "2026-11-04", "dl": "2026年11月4日", "k": "sns", "who": "Yahoo!リアルタイム検索「SNSのバズまとめ」（AIによる要約）", "head": "夜更かしやスマホをやめると、睡眠が改善し朝が楽になる", "note": "早めに布団に入る・枕を新調する・朝の光を浴びるといった改善策の投稿を紹介しています。", "tie": null, "c": ["睡眠"], "m": "生活習慣", "q": [], "url": "https://search.yahoo.co.jp/realtime/search/matome/349eacff76c64c36b31b0b87d44f9426-1793760300"},
+  {"d": "2026-10-12", "dl": "2026年10月12日", "k": "sns", "who": "Yahoo!リアルタイム検索「SNSのバズまとめ」（AIによる要約）", "head": "豆乳は、植物性たんぱく質やイソフラボンを手軽に摂れる", "note": "豆乳の日に合わせ、運動後や筋トレ・ダイエット中の栄養補給に勧める投稿を紹介しています。", "tie": null, "c": ["筋肉"], "m": "食べ物・飲み物", "q": [], "url": "https://search.yahoo.co.jp/realtime/search/matome/6d9337747344465590003acabcc58ae9-1791759600"},
+  {"d": "2026-11-02", "dl": "2026年11月2日", "k": "yt", "who": "やさしい予防医学チャンネル（医師が解説）", "head": "慢性炎症を招く食べ物と、炎症を鎮める食べ物がある", "note": "炎症を招く食べ物と、炎症を抑える食べ物・飲み物を3つずつ紹介しています。", "tie": "購入ページへのリンク：発信元が、説明欄に発酵高麗人参の健康食品の購入リンクと割引クーポンを掲載しています。", "c": ["コレステロール・中性脂肪"], "m": "食べ物・飲み物", "q": ["医師"], "url": "https://www.youtube.com/watch?v=y8t5CZ-9Fwk"},
+  {"d": "2026-10-31", "dl": "2026年10月31日", "k": "yt", "who": "YouTube医療大学（医師が解説）", "head": "麦茶の「血液サラサラ」の根拠は、6人だけの企業研究だ", "note": "麦茶の研究の限界に加え、緑茶のほうが根拠が強いことや水分補給の方法を紹介しています。", "tie": "その他：発信元が、説明欄で月額980円の健康相談サービスへの入会を案内しています。", "c": [], "m": "食べ物・飲み物", "q": ["医師"], "url": "https://www.youtube.com/watch?v=nUeks7S4iqk"},
+  {"d": "2026-10-01", "dl": "2026年10月1日", "k": "pub", "who": "消費者庁", "head": "栄養機能食品の上限値・下限値と表示の文言を改正した", "note": "栄養成分の上限値・下限値、機能の表示、摂取時の注意事項を改正したと通知しています。", "tie": null, "c": [], "m": "サプリ", "q": [], "url": "https://www.caa.go.jp/policies/policy/food_labeling/food_labeling_act/assets/food_labeling_cms201_261001_09.pdf"},
+  {"d": "2026-09-16", "dl": "2026年9月16日", "k": "pub", "who": "国民生活センター", "head": "健康食品は、危害情報の多い商品の上位3位に入った", "note": "2025年度の危害情報1万3432件で、上位は化粧品・医療サービス・健康食品だったと発表しています。", "tie": null, "c": [], "m": "サプリ", "q": [], "url": "https://www.kokusen.go.jp/news/data/n-20260916_4.html"},
+  {"d": "2026-10-07", "dl": "2026年10月7日", "k": "pub", "who": "国民生活センター", "head": "パーソナルトレーニングの契約トラブルが増えている", "note": "2025年度の相談は1,457件で、サプリやエステも勧誘される事例があると発表しています。", "tie": null, "c": ["体重・体脂肪"], "m": "生活習慣", "q": [], "url": "https://www.kokusen.go.jp/news/data/n-20261007_1.html"},
+  {"d": "2026-10-02", "dl": "2026年10月2日", "k": "pub", "who": "厚生労働省（東京都の発表を掲載）", "head": "健康食品の「ゲンノショウコ」に、医薬品成分が含まれていた", "note": "東京都の検査で医薬品成分を確認し、販売中止と自主回収を指示したと発表しています。", "tie": null, "c": [], "m": "食べ物・飲み物", "q": [], "url": "https://www.mhlw.go.jp/stf/newpage_76534.html"},
+  {"d": "2026-10-03", "dl": "2026年10月3日", "k": "pub", "who": "日本肥満学会", "head": "インクレチン関連薬での減量には、ケトーシスの危険がある", "note": "GLP-1受容体作動薬などを使った減量で、ケトーシスの報告が増えていると発表しています。", "tie": "その他：日本肥満学会は、GLP-1受容体作動薬の製造販売企業から研究助成などの資金提供を受けています。", "c": ["体重・体脂肪"], "m": "薬・治療", "q": [], "url": "https://www.jasso.or.jp/data/Introduction/pdf/safe-weight-loss_statement_20261001.pdf"},
+  {"d": "2026-10", "dl": "2026年10月", "k": "pub", "who": "医薬品医療機器総合機構（PMDA）", "head": "美容・痩身目的のGLP-1薬の使用で、救急搬送例が出ている", "note": "過度な食事制限下での使用で、嘔吐やケトーシスにより救急搬送された報告が複数あると記載しています。", "tie": null, "c": ["体重・体脂肪"], "m": "薬・治療", "q": [], "url": "https://www.pmda.go.jp/files/000283397.pdf"},
+  {"d": "2026-08-28", "dl": "2026年8月28日", "k": "paper", "who": "Circulation（デンマークの臨床試験）", "head": "ビタミンK2とD3の補給で、冠動脈の石灰化の進行が抑えられた", "note": "重い石灰化がある398人で、24か月の石灰化スコアの増加が偽薬より52少なかったと記載しています。", "tie": null, "c": [], "m": "サプリ", "q": ["研究者"], "url": "https://pubmed.ncbi.nlm.nih.gov/42661461/"},
+  {"d": "2026-09-07", "dl": "2026年9月7日", "k": "paper", "who": "Bone（フィンランドの臨床試験）", "head": "ビタミンD3の補給は、高齢者の骨折を減らさなかった", "note": "2495人の5年間の試験で、1日1600IUの群は偽薬群より骨折が多かったと記載しています。", "tie": null, "c": ["骨"], "m": "サプリ", "q": ["研究者"], "url": "https://pubmed.ncbi.nlm.nih.gov/42704968/"},
+  {"d": "2026-09-29", "dl": "2026年9月29日", "k": "paper", "who": "Food & Function（スペインの臨床試験）", "head": "クルミを毎日40g食べると、気分が改善する", "note": "若年成人31人の8週間の試験で、気分の乱れの点数が4.85点下がったと記載しています。", "tie": null, "c": ["ストレス・気分"], "m": "食べ物・飲み物", "q": ["研究者"], "url": "https://pubmed.ncbi.nlm.nih.gov/42808314/"},
+  {"d": "2026-09-09", "dl": "2026年9月9日", "k": "paper", "who": "Journal of Clinical Lipidology（ドイツ・フィンランドの臨床試験）", "head": "魚油の補給で、心血管リスクの指標が下がった", "note": "LDLが高めの成人で、1日3gのEPA・DHAを加えた群はCERT2が下がったと記載しています。", "tie": "その他：著者の一部が、セラミドを使った心血管リスク診断の特許を持つ企業に所属しています。", "c": ["コレステロール・中性脂肪"], "m": "サプリ", "q": ["研究者"], "url": "https://pubmed.ncbi.nlm.nih.gov/42716852/"},
+  { d: "2026-11-05", dl: "2026年11月5日", k: "media", who: "ヨガジャーナルオンライン（管理栄養士が解説）",
+    head: "卵は、健康な人なら1日1〜2個が目安",
+    note: "卵1個のたんぱく質は約6.1gで、他の食材を足すと補いやすいと記載しています。",
+    tie: null, c: ["筋肉"], m: "食べ物・飲み物", q: ["管理栄養士"], url: "https://yogajournal.jp/34213" },
+  { d: "2026-11-04", dl: "2026年11月4日", k: "hosp", who: "内視鏡クリニックのブログ",
+    head: "水溶性食物繊維は、認知症リスクの低下と関連する",
+    note: "海藻・大豆などの水溶性食物繊維を勧め、加工肉は避けたほうがよいと記載しています。",
+    tie: null, c: ["認知機能"], m: "食べ物・飲み物", q: ["医師"], url: "https://www.fukuoka-tenjin-naishikyo.com/blogpage/2026/11/04/17360/" },
+  { d: "2026-11-02", dl: "2026年11月2日", k: "hosp", who: "内科病院の健康・栄養だより",
+    head: "さつまいもは、皮ごと蒸すか焼く",
+    note: "食物繊維・ビタミンC・カリウムを含む一方、炭水化物が多いため適量にするよう記載しています。",
+    tie: null, c: ["腸内環境"], m: "食べ方・レシピ", url: "https://mito-hp.jp/blog/%e7%a7%8b%e3%81%ae%e5%91%b3%e8%a6%9a%e3%80%8c%e3%81%95%e3%81%a4%e3%81%be%e3%81%84%e3%82%82%e3%80%8d%e3%82%92%e6%a5%bd%e3%81%97%e3%82%82%e3%81%86%ef%bc%81" },
+  { d: "2026-11-01", dl: "2026年11月1日", k: "sns", who: "Togetter（Xの投稿のまとめ）",
+    head: "不調ごとにサプリを重ねたら、肝臓の数値に異常が出た",
+    note: "亜鉛・ビタミンDなどを重ねた投稿者の体験談で、医師の診断内容は示されていません。",
+    tie: "購入ページへのリンク：まとめサイトが、ビタミンDサプリのアフィリエイトリンクを掲載しています。", c: ["肝機能"], m: "サプリ", url: "https://togetter.com/li/2765272" },
+  { d: "2026-11-01", dl: "2026年11月1日", k: "web", who: "オトナンサー（糖尿病専門医が解説）",
+    head: "紅茶は、食後の血糖値の上昇を緩やかにする可能性がある",
+    note: "根拠は小規模な研究にとどまり、HbA1cを改善する十分な根拠はないと記載しています。",
+    tie: null, c: ["血糖値"], m: "食べ物・飲み物", q: ["医師"], url: "https://otonanswer.jp/post/405409/" },
+  { d: "2026-11-01", dl: "2026年11月1日", k: "media", who: "ヨガジャーナルオンライン（管理栄養士が解説）",
+    head: "玄米は、毎日食べても基本的に問題ない",
+    note: "食物繊維を摂れる一方、フィチン酸がミネラルの吸収を妨げる点もあわせて記載しています。",
+    tie: null, c: ["腸内環境"], m: "食べ物・飲み物", q: ["管理栄養士"], url: "https://yogajournal.jp/34145" },
+  { d: "2026-10-30", dl: "2026年10月30日", k: "sns", who: "Togetter（Xの投稿のまとめ）",
+    head: "小松菜は、味噌汁にすれば安く使い切れる",
+    note: "冷凍して汁物に使う方法のほか、ほうれん草より鉄分が多いという返信も紹介しています。",
+    tie: "購入ページへのリンク：まとめサイトが、関連商品のアフィリエイトリンクを掲載しています。", c: ["貧血"], m: "食べ方・レシピ", url: "https://togetter.com/li/2764652" },
+  { d: "2026-10-30", dl: "2026年10月30日", k: "web", who: "オトナンサー（管理栄養士が解説）",
+    head: "冷え性には、加熱・乾燥したショウガ",
+    note: "生のショウガの食べ過ぎは、かえって冷えを招くと記載しています。",
+    tie: "その他：解説した管理栄養士が、ダイエットサロンを経営しています。", c: ["冷え"], m: "食べ方・レシピ", q: ["管理栄養士"], url: "https://otonanswer.jp/post/405134/" },
+  { d: "2026-10-30", dl: "2026年10月30日", k: "web", who: "プレジデントオンライン（dancyuの記事を転載）",
+    head: "ヨーグルトは、オリゴ糖や食物繊維と一緒に食べる",
+    note: "無糖のヨーグルトを勧め、腸内環境の改善に役立つと記載しています。",
+    tie: null, c: ["腸内環境"], m: "食べ方・レシピ", url: "https://president.jp/articles/-/121039" },
+  { d: "2026-10-29", dl: "2026年10月29日", k: "sns", who: "Togetter（Xの投稿のまとめ）",
+    head: "たんぱく質は、秋鮭や鰯の焼き魚でも摂れる",
+    note: "サラダチキン以外の食材として、鮭・砂肝・高野豆腐・豆乳などが挙がったと紹介しています。",
+    tie: "購入ページへのリンク：まとめサイトが、関連商品のアフィリエイトリンクを掲載しています。", c: ["筋肉"], m: "食べ物・飲み物", url: "https://togetter.com/li/2763395" },
+  { d: "2026-10-29", dl: "2026年10月29日", k: "corp", who: "森永乳業のプレスリリース",
+    head: "2種のビフィズス菌のサプリで、おなかの脂肪を減らす",
+    note: "BMIが高めの人向けの機能性表示食品として、通販で発売すると発表しています。",
+    tie: "商品・サービスを販売：森永乳業が対象商品を販売し、自社の通販サイトへのリンクを掲載しています。", c: ["体重・体脂肪", "腸内環境"], m: "サプリ", url: "https://prtimes.jp/main/html/rd/p/000001542.000021580.html" },
+  { d: "2026-10-12", dl: "2026年10月12日", k: "media", who: "ESSE online（精神科医が解説）",
+    head: "カフェインは、寝る6〜8時間前から控える",
+    note: "起床時刻を一定にし、カフェインの量と時間帯を見直すよう勧めています。",
+    tie: null, c: ["睡眠"], m: "生活習慣", q: ["医師"], url: "https://esse-online.jp/articles/-/38620" },
+  { d: "2026-10-06", dl: "2026年10月6日", k: "sns", who: "Togetter（Xの投稿のまとめ）",
+    head: "値上がりしたホエイの代わりに、ソイプロテイン",
+    note: "低脂肪乳で割るなど、おいしく飲める商品と飲み方が集まったと紹介しています。",
+    tie: "購入ページへのリンク：まとめサイトが、関連商品のアフィリエイトリンクを掲載しています。", c: ["筋肉"], m: "サプリ", url: "https://togetter.com/li/2754727" },
+  { d: "2026-10-05", dl: "2026年10月5日", k: "sns", who: "Togetter（Xの投稿のまとめ）",
+    head: "昼食後の強い眠気は、血糖値スパイクが原因の場合がある",
+    note: "昼の炭水化物を減らす体験談と、受診を勧める声を紹介しています。",
+    tie: "購入ページへのリンク：まとめサイトが、関連商品のアフィリエイトリンクを掲載しています。", c: ["血糖値"], m: "生活習慣", url: "https://togetter.com/li/2754371" },
+  { d: "2026-09-21", dl: "2026年9月21日", k: "hosp", who: "内科・循環器クリニックの院長ブログ",
+    head: "食塩の約7割は、調味料からとっている",
+    note: "減塩には個人の工夫と食品環境の改善の両方が必要とし、減塩塩も選択肢に挙げています。",
+    tie: null, c: ["血圧"], m: "食べ方・レシピ", q: ["医師"], url: "https://saito-heart.com/blog/%e7%ac%ac4%e5%9b%9e%e3%80%80%e5%a1%a9%e5%88%86%e3%81%a8%e9%ab%98%e8%a1%80%e5%9c%a7%e2%91%a3" },
+  { d: "2026-09-16", dl: "2026年9月16日", k: "corp", who: "カネリョウ海藻のプレスリリース",
+    head: "海藻をよく食べる人ほど、酪酸産生菌が多い",
+    note: "1,000人分の腸内細菌データを分析した観察研究を、学会で発表したと記載しています。",
+    tie: "商品・サービスを販売：カネリョウ海藻が海藻製品を製造販売しています。", c: ["腸内環境"], m: "食べ物・飲み物", url: "https://prtimes.jp/main/html/rd/p/000000059.000021194.html" },
+  { d: "2026-09-04", dl: "2026年9月4日", k: "pub", who: "消費者庁",
+    head: "ネット販売の健康食品126商品に、表示の改善を指導",
+    note: "117事業者の126商品に、健康増進法違反のおそれがある表示があったと発表しています。",
+    tie: null, c: [], m: "サプリ", url: "https://www.caa.go.jp/notice/entry/047389/" },
+  { d: "2026-09-01", dl: "2026年9月1日", k: "sns", who: "Togetter（Xの投稿のまとめ）",
+    head: "納豆にお湯を注ぐだけで、スープになる",
+    note: "付属のたれとからしを入れた納豆にお湯を注ぐ、中国朝鮮族の食べ方を紹介しています。",
+    tie: "購入ページへのリンク：まとめサイトが、関連商品のアフィリエイトリンクを掲載しています。", c: [], m: "食べ方・レシピ", url: "https://togetter.com/li/2740080" },
+  { d: "2026-11-02", dl: "2026年11月2日", k: "sns", who: "Togetter（Xの投稿のまとめ）",
+    head: "味噌汁にサバ缶を入れると、あら汁のようでおいしい",
+    note: "Xの投稿をまとめ、ネギ・えのき・生姜など、おすすめの具材も集めています。",
+    tie: "購入ページへのリンク：サバ缶の商品リンクに、アフィリエイト用のタグが付いています。", c: [], m: "食べ方・レシピ", url: "https://togetter.com/li/2765826" },
+  { d: "2026-10-26", dl: "2026年10月26日", k: "media", who: "Medical DOC（糖尿病が専門の医師が監修）",
+    head: "秋の味覚は、野菜から先に食べれば我慢しなくていい",
+    note: "栗やさつまいもはごはんの一部として量を調整し、柿は1/2〜2/3個を目安にするよう勧めています。",
+    tie: null, c: ["血糖値"], m: "食べ方・レシピ", q: ["医師"], url: "https://medicaldoc.jp/m/column-m/pj-202610s0009/" },
+  { d: "2026-10-16", dl: "2026年10月16日", k: "yt", who: "料理動画のチャンネル",
+    head: "鯖缶を汁ごと焼くだけで、血液サラサラの常備菜に",
+    note: "動画のタイトルで、たんぱく質・カルシウム・血液サラサラをうたっています。説明欄に健康効果の記載はありません。",
+    tie: "購入ページへのリンク：説明欄にAmazon・楽天の商品リンクがあり、Amazonアソシエイトへの参加を記載しています。", c: ["コレステロール・中性脂肪"], m: "食べ方・レシピ", url: "https://www.youtube.com/watch?v=6bs0eyBhSsA" },
+  { d: "2026-09-03", dl: "2026年9月16日更新", k: "media", who: "Medical DOC（総合診療医が監修）",
+    head: "コレステロール・中性脂肪は、海藻・きのこ・りんごで下げる",
+    note: "肉の脂を、青魚や植物油に多い不飽和脂肪酸に置き換えることも有効と記載しています。",
+    tie: null, c: ["コレステロール・中性脂肪"], m: "食べ物・飲み物", q: ["医師"], url: "https://medicaldoc.jp/m/column-m/202609t0461/" },
+  { d: "2026-04-17", dl: "2026年4月", k: "corp", who: "伊藤食品のレシピページ",
+    head: "鯖缶の味噌汁は、缶汁ごと使えばDHA・EPAも余さず摂れる",
+    note: "鯖水煮缶・白菜・長ネギ・味噌で、出汁を使わず5分で作るレシピを紹介しています。",
+    tie: "商品・サービスを販売：伊藤食品がサバ缶を製造販売しています。", c: ["コレステロール・中性脂肪"], m: "食べ方・レシピ", url: "https://www.ito-foods.co.jp/2026/04/17/sabakanmisosiru/" },
+  { d: "2026-04-02", dl: "2026年4月2日", k: "hosp", who: "内科クリニックのブログ",
+    head: "青魚は、中性脂肪を劇的に下げる",
+    note: "サバ・イワシ・サンマを週2〜3回食べるよう勧めています。卵は1日1個なら問題ないと記載しています。",
+    tie: null, c: ["コレステロール・中性脂肪"], m: "食べ物・飲み物", q: ["医師"], url: "https://tanaka-naika-cl.jp/blog/post-2489/" },
+  { d: "2025-01-09", dl: "2025年1月9日更新", k: "pub", who: "農林水産省",
+    head: "EPA・DHAは体内で作れず、主に魚介類から摂る",
+    note: "n-3系脂肪酸の目安量を、30〜49歳の女性で1日1.6gとしています。",
+    tie: null, c: ["コレステロール・中性脂肪"], m: "食べ物・飲み物", url: "https://www.maff.go.jp/j/syouan/seisaku/trans_fat/t_eikyou/fat_eikyou.html" },
+  { d: "2026-10-27", dl: "2026年10月27日", k: "news", who: "配信元：Medical DOC（産婦人科医の取材記事）",
+    head: "ピルを長く飲んでも、更年期は早まらない",
+    note: "産婦人科医が取材に答え、ピルは閉経を遅らせることもないと説明しています。",
+    tie: null, c: ["更年期"], m: "薬・治療", q: ["医師"], url: "https://news.yahoo.co.jp/pickup/6600279" },
+  { d: "2026-10-21", dl: "2026年10月21日更新", k: "comp", who: "mybest（更年期サプリのランキング）",
+    head: "更年期障害を治療するサプリは存在しない",
+    note: "ランキングの1位はエクオールのサプリで、記事はサプリを「お守り程度」と記載しています。",
+    tie: "購入ページへのリンク：ECサイトやメーカーから送客手数料を受け取ると記載しています。", c: ["更年期"], m: "サプリ", topic: "r", url: "https://my-best.com/2813" },
+  { d: "2026-10-15", dl: "2026年10月", k: "hosp", who: "美容皮膚科クリニックのコラム",
+    head: "プラセンタ注射は、ほてりや不眠の緩和に用いられる",
+    note: "美容目的のプラセンタ注射は、自由診療になると記載しています。",
+    tie: "商品・サービスを販売：発信元のクリニックが自由診療のプラセンタ注射を提供しています。", c: ["更年期", "ほてり", "睡眠"], m: "薬・治療", topic: "p", url: "https://www.hiro-clinic.or.jp/beauty/trial-placenta-fatigue2/" },
+  { d: "2026-10-14", dl: "2026年10月", k: "comp", who: "mybest（市販の漢方薬のランキング）",
+    head: "ほてりには桂枝茯苓丸、冷えには当帰芍薬散",
+    note: "症状別に漢方薬を挙げ、市販品を順位付けで紹介しています。",
+    tie: "購入ページへのリンク：ECサイトなどから送客手数料を受け取ると記載しています。", c: ["更年期", "ほてり", "冷え"], m: "薬・治療", topic: "k", url: "https://my-best.com/19171" },
+  { d: "2026-10-13", dl: "2026年10月", k: "hosp", who: "産婦人科グループのサイトのコラム",
+    head: "エクオール・大豆イソフラボンの更年期サプリ14商品を比較",
+    note: "14商品を比較し、目安量を守って飲むよう案内しています。",
+    tie: "購入ページへのリンク：アフィリエイト用のリンクがあり、口コミにPR表記があります。", c: ["更年期"], m: "サプリ", topic: "i", url: "https://www.shiroko-clinic.com/article/menopause/" },
+  { d: "2026-10-01", dl: "2026年10月1日", k: "pub", who: "厚生労働省",
+    head: "プラセンタ注射を受けても、献血できるようになった",
+    note: "平成18年から続いた献血の制限を解除し、最終使用日の3か月後から献血できるとQ&Aで説明しています。",
+    tie: null, c: ["更年期"], m: "薬・治療", topic: "p", url: "https://www.mhlw.go.jp/stf/newpage_70274.html" },
+  { d: "2026-09-07", dl: "2026年9月", k: "trade", who: "日本食糧新聞",
+    head: "エクオールと大豆イソフラボンを一緒に摂れるサプリが発売",
+    note: "アサヒグループ食品が発売しました。1日2粒でS-エクオール2mg・大豆イソフラボン22mgを摂れます。",
+    tie: null, c: ["更年期"], m: "サプリ", topic: "r", url: "https://news.nissyoku.co.jp/foodsnews/260824-23" },
+  { d: "2026-09-04", dl: "2026年9月4日更新", k: "hosp", who: "更年期専門のオンライン診療のコラム",
+    head: "更年期太りには、高GI食品・夜のお酒・食事抜きを避ける",
+    note: "食事で改善しない場合の選択肢として、GLP-1・HRT・漢方を紹介しています。",
+    tie: "商品・サービスを販売：発信元がGLP-1・HRTのオンライン診療を提供し、予約リンクを掲載しています。", c: ["更年期", "体重・体脂肪"], m: "食べ方・レシピ", q: ["医師"], url: "https://vivalle-mydoctor.com/blog/menopause-diet-foods/" },
+  { d: "2026-08-21", dl: "2026年8月", k: "paper", who: "PubMed掲載のコホート研究",
+    head: "閉経60歳以下でHRTを使った人は、乳がんが少なかった",
+    note: "閉経が60歳を超えた群では、HRT使用者の乳がんが多かったと報告しています。",
+    tie: null, c: ["更年期", "乳がん"], m: "薬・治療", topic: "h", q: ["研究者"], url: "https://pubmed.ncbi.nlm.nih.gov/42626741/" },
+  { d: "2026-05-29", dl: "2026年5月29日更新", k: "hosp", who: "内科クリニックの院長コラム",
+    head: "更年期に食べてはいけないものは、特にない",
+    note: "熱い物・香辛料・お酒・カフェインは、ほてりを誘発する可能性があると記載しています。",
+    tie: null, c: ["更年期", "ほてり"], m: "食べ物・飲み物", q: ["医師", "管理栄養士"], url: "https://www.uchida-naika.clinic/blog/not_good_for_menopause/" },
+  { d: "2026-01-15", dl: "2026年1月", k: "hosp", who: "整形外科クリニックのブログ",
+    head: "大豆イソフラボンの結果は、量と期間で変わる可能性がある",
+    note: "効果を報告した試験と、12週間で改善がなかった試験を並べて紹介しています。",
+    tie: "商品・サービスを販売：発信元のクリニックがエクオールのサプリ・プラセンタ注射を自費で案内しています。", c: ["更年期", "ほてり"], m: "サプリ", topic: "i", url: "https://idogaya-seikei.com/blog/%E5%A4%A7%E8%B1%86%E3%82%A4%E3%82%BD%E3%83%95%E3%83%A9%E3%83%9C%E3%83%B3%E3%81%A8%E6%9B%B4%E5%B9%B4%E6%9C%9F%E7%97%87%E7%8A%B6%EF%BC%9A%E7%A0%94%E7%A9%B6%E7%B5%90%E6%9E%9C%E3%81%8B%E3%82%89%E8%A6%8B" },
+  { d: "2025-12-24", dl: "2025年12月24日更新", k: "hosp", who: "婦人科クリニックのコラム",
+    head: "食事だけでは、エストロゲンは増やせない",
+    note: "HRTを最も効果が高い治療法と位置づけ、大豆イソフラボンの摂取も勧めています。",
+    tie: "その他：サイトのメニューに「クリニックサプリメント」の項目があります。", c: ["更年期"], m: "食べ物・飲み物", q: ["医師"], url: "https://naminamicl.jp/column/menopause/estrogen-increase/" },
+  { d: "2025-11-05", dl: "2025年11月5日", k: "corp", who: "フジッコのプレスリリース",
+    head: "大豆イソフラボンと黒豆ポリフェノールで、睡眠の質が改善した",
+    note: "更年期周辺の女性を対象にした、併用摂取の試験結果を発表しています。",
+    tie: "商品・サービスを販売：フジッコが試験に使った素材を販売しています。", c: ["更年期", "睡眠"], m: "サプリ", topic: "i", url: "https://www.fujicco.co.jp/corp/upload/pr_251105.pdf" },
+  { d: "2025-10-31", dl: "2025年10月31日更新", k: "pub", who: "厚生労働省の事業サイト（eJIM）",
+    head: "大豆イソフラボンのサプリは、有効性を示す根拠がほとんどない",
+    note: "米国の国立補完統合衛生センターの資料を翻訳して掲載しています。",
+    tie: null, c: ["更年期", "ほてり"], m: "サプリ", topic: "i", url: "https://www.ejim.mhlw.go.jp/pro/communication/c03/04.html" },
+  { d: "2025-01-15", dl: "2025年1月", k: "hosp", who: "産婦人科クリニックのコラム",
+    head: "大豆イソフラボンは、1日40〜50mgが目安",
+    note: "食品安全委員会が定めた上限値70〜75mgもあわせて紹介しています。",
+    tie: "商品・サービスを販売：発信元のクリニックがプラセンタ注射・サプリを自由診療で扱っています。", c: ["更年期", "ほてり"], m: "サプリ", topic: "i", url: "https://sola-clinic.jp/column/menopause/3277/" },
+  { d: "2024-04-15", dl: "2024年4月", k: "media", who: "サライ.jp（薬剤師の執筆記事）",
+    head: "漢方は、西洋薬より副作用のリスクが低いといわれる",
+    note: "ホットフラッシュには加味逍遙散・桂枝茯苓丸を挙げています。",
+    tie: "関連企業に所属：執筆者がオンライン漢方サービスの薬剤師で、記事内で同サービスを紹介しています。", c: ["更年期", "ほてり"], m: "薬・治療", topic: "k", q: ["薬剤師"], url: "https://serai.jp/health/1180823" },
+  { d: "2023-06-15", dl: "2023年6月", k: "hosp", who: "産婦人科医院の院長コラム",
+    head: "HRTを受けられない人には、エクオールのサプリ",
+    note: "約3か月の服用でほてりが改善したデータがあると記載しています。",
+    tie: "商品・サービスを販売：記事で勧めるサプリを、発信元の医院が受付で販売しています。", c: ["更年期", "ほてり"], m: "サプリ", topic: "r", q: ["医師"], url: "https://www.fuyukilc.or.jp/column/%E9%96%89%E7%B5%8C%E5%89%8D%E3%81%8B%E3%82%89%E6%9C%89%E7%94%A8%E3%81%AA%E3%80%8C%E3%82%A8%E3%82%AF%E3%82%AA%E3%83%BC%E3%83%AB%E3%83%BB%E3%82%B5%E3%83%97%E3%83%AA%E3%83%A1%E3%83%B3%E3%83%88%E3%80%8D/" },
+  { d: "", dl: "掲載日の記載なし", k: "news", who: "配信元：ヨガジャーナルオンライン",
+    head: "大豆入りのヴィーガン食で、ホットフラッシュが92%減った",
+    note: "米国の医師団体が、更年期の女性84人を12週間調べた研究を紹介しています。",
+    tie: null, c: ["更年期", "ほてり", "体重・体脂肪"], m: "食べ方・レシピ", topic: "i", url: "https://news.yahoo.co.jp/articles/c8e939b4f6e9eeec2c1488a6d95972f47d811e5d" },
+  { d: "", dl: "掲載日の記載なし", k: "corp", who: "富士製薬工業の患者向けQ&A",
+    head: "HRTは5年未満なら、乳がんのリスクは上がらない",
+    note: "5年以上でも、飲酒や肥満と同じかそれ以下のリスクと記載しています。",
+    tie: "商品・サービスを販売：富士製薬工業がHRT製剤を製造販売しています。", c: ["更年期", "乳がん"], m: "薬・治療", topic: "h", url: "https://www.fujipharma.jp/patients/menopause/faq/" }
+];
+ITEMS.sort((a, b) => (b.d || "0").localeCompare(a.d || "0"));
+
+const CONCERNS = [["血糖値","血管・血液"],["コレステロール・中性脂肪","血管・血液"],["血圧","血管・血液"],["貧血","血管・血液"],["体重・体脂肪","全身"],["腸内環境","胃腸"],["便秘","胃腸"],["睡眠","脳・神経"],["認知機能","脳・神経"],["ストレス・気分","脳・神経"],["目の疲れ・視力","目"],["歯・歯ぐき","口・歯"],["口臭","口・歯"],["肌の乾燥・しみ","肌"],["抜け毛・白髪","髪"],["筋肉","筋肉・骨"],["骨","筋肉・骨"],["肝機能","肝臓"],["冷え","全身"],["ほてり","全身"],["疲労","全身"],["むくみ","全身"],["免疫","全身"],["乳がん","乳房"],["更年期","卵巣・子宮"]];
+const C_PART = Object.fromEntries(CONCERNS);
+const PARTS = ["脳・神経","目","口・歯","肌","髪","血管・血液","胃腸","肝臓","筋肉・骨","乳房","卵巣・子宮","全身"];
+const MEANS = ["食べ物・飲み物", "食べ方・レシピ", "サプリ", "薬・治療", "生活習慣"];
+const QUALS = ["医師", "歯科医師", "管理栄養士", "薬剤師", "研究者", "その他の資格"];
+ITEMS.forEach(it => { it.b = [...new Set(it.c.map(c => C_PART[c]))]; });
+const st = { c: "すべて", p: "すべて", m: "すべて", q: "すべて", star: false };
+
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const tieChip = t => t
+  ? `<span class="tie"><i></i>販売・PR：${esc(t.split("：")[0])}</span>`
+  : `<span class="tie none"><i></i>販売・PRとの関係：確認できず</span>`;
+const match = (it, o) => (o.c === "すべて" || it.c.includes(o.c)) && (o.p === "すべて" || it.b.includes(o.p))
+  && (o.m === "すべて" || it.m === o.m) && (!o.star || clips.has(it.url)) && (o.q === "すべて" || (it.q || []).includes(o.q));
+const countWith = patch => ITEMS.filter(it => match(it, { ...st, ...patch })).length;
+
+/* クリップ：ログインなしで、閲覧しているブラウザに保存する */
+let clips = new Set();
+try { const raw = localStorage.getItem("hc-clips"); if (raw) clips = new Set(JSON.parse(raw)); } catch (e) {}
+function saveLocal() { try { localStorage.setItem("hc-clips", JSON.stringify([...clips])); } catch (e) {} }
+function toggleClip(url) {
+  clips.has(url) ? clips.delete(url) : clips.add(url);
+  saveLocal(); render();
+}
+
+let tab = "theme";
+const LABEL = { c: "", m: "", q: "", p: "部位：" };
+const chipBtns = (key, list, counts) => ["すべて", ...list].map(t => {
+  const n = counts ? counts(t) : null;
+  const dis = n === 0 && st[key] !== t;
+  return `<button class="chip" type="button" data-k="${key}" data-v="${esc(t)}" aria-pressed="${st[key] === t}" ${dis ? "disabled" : ""}>${esc(t)}${n !== null && t !== "すべて" ? `<small>${n}</small>` : ""}</button>`;
+}).join("");
+function renderPanel() {
+  document.querySelectorAll(".ftabs button").forEach(b => b.setAttribute("aria-selected", b.dataset.tab === tab));
+  let html = "";
+  if (tab === "theme") {
+    const shown = CONCERNS.map(([n]) => n).filter(n => n === st.c || ((st.p === "すべて" || C_PART[n] === st.p) && countWith({ c: n }) > 0));
+    html = `<div class="chips">${chipBtns("c", shown)}</div>`;
+  } else if (tab === "part") {
+    html = `<div class="chips">${chipBtns("p", PARTS, n => countWith({ p: n, c: "すべて" }))}</div>`;
+  } else {
+    html = `<span class="glbl">取り入れ方</span><div class="chips">${chipBtns("m", MEANS)}</div>
+      <span class="glbl">専門分野・資格</span><div class="chips">${chipBtns("q", QUALS)}</div>`;
+  }
+  document.getElementById("panel").innerHTML = html;
+  const act = ["c", "m", "p", "q"].filter(k => st[k] !== "すべて");
+  document.getElementById("active").innerHTML = act.map(k => `<button class="pclear" type="button" data-clear="${k}">${LABEL[k]}${esc(st[k])} ×</button>`).join("");
+}
+function render() {
+  renderPanel();
+  const list = ITEMS.filter(it => match(it, st));
+  const tg = document.getElementById("startog");
+  tg.setAttribute("aria-pressed", st.star);
+  tg.innerHTML = `<i>★</i>マイクリップ <b>${clips.size}</b>`;
+  document.getElementById("feed").innerHTML = list.length ? list.map(cardHTML).join("")
+    : `<li class="empty">${st.star ? "★を付けた記事はまだありません。記事の右下の☆を押すと、マイクリップで一覧にできます。" : "該当する話題はまだありません。"}</li>`;
+}
+const STAR = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3.2 2.7 5.6 6.1.8-4.5 4.2 1.1 6.1L12 17l-5.4 2.9 1.1-6.1-4.5-4.2 6.1-.8z"/></svg>`;
+function cardHTML(it) {
+    const i = ITEMS.indexOf(it), on = clips.has(it.url);
+    return `<li><button class="card" type="button" data-i="${i}">
+      <div class="who"><span class="kind ${KIND_CLASS[it.k]}">${KIND[it.k]}</span>${(it.q || []).map(q => `<span class="qb">${q}</span>`).join("")}<time>${esc(it.dl)}</time></div>
+      <p class="head"><q>${esc(it.head)}</q></p>
+      <p class="src">${esc(it.who)}</p>
+      <div class="foot">${tieChip(it.tie)}<span class="mlabel">${esc(it.m)}</span>${it.c.map(t => `<span class="tag">${esc(t)}</span>`).join("")}</div>
+    </button><button class="clip" type="button" data-u="${esc(it.url)}" aria-pressed="${on}" aria-label="${on ? "★を外す" : "★を付ける"}">${STAR}</button></li>`;
+}
+function openSheet(i) {
+  const it = ITEMS[i], dlg = document.getElementById("sheet");
+  document.getElementById("sheet-body").innerHTML = `
+    <div class="grip" aria-hidden="true"></div>
+    <button class="close" type="button" id="close">閉じる</button>
+    <div class="who"><span class="kind ${KIND_CLASS[it.k]}">${KIND[it.k]}</span>${(it.q || []).map(q => `<span class="qb">${q}</span>`).join("")}<time>${esc(it.dl)}</time></div>
+    <p class="head" id="s-head"><q>${esc(it.head)}</q></p>
+    <p class="src">${esc(it.who)}</p>
+    <div class="box"><small>発信元の記載</small><p>${esc(it.note)}</p></div>
+    ${it.tie
+      ? `<div class="box t"><small>販売・PRとの関係</small><p>${esc(it.tie.split("：").slice(1).join("："))}</p></div>`
+      : `<div class="box"><small>販売・PRとの関係</small><p>記事・サイト上の記載からは、販売・PRとの関係を確認できませんでした。</p></div>`}
+    <div class="btns">
+      <a class="btn main" href="${esc(it.url)}" target="_blank" rel="noopener">元の記事を開く</a>
+      <button class="btn clipbtn" type="button" id="sheet-clip" aria-pressed="${clips.has(it.url)}">${clips.has(it.url) ? "★を外す" : "★を付けて保存する"}</button>
+    </div>
+    <p class="note">見出しは、発信元の記載をHealth Clipが短くまとめたものです。Health Clipは内容の正誤を判定しません。</p>`;
+  document.getElementById("close").onclick = () => dlg.close();
+  document.getElementById("sheet-clip").onclick = e => {
+    toggleClip(it.url);
+    const on = clips.has(it.url);
+    e.currentTarget.setAttribute("aria-pressed", on);
+    e.currentTarget.textContent = on ? "★を外す" : "★を付けて保存する";
+  };
+  dlg.showModal();
+}
+
+document.querySelector(".ftabs").addEventListener("click", e => {
+  const b = e.target.closest("[data-tab]"); if (!b) return;
+  tab = b.dataset.tab; renderPanel();
+});
+document.getElementById("panel").addEventListener("click", e => {
+  const b = e.target.closest(".chip"); if (!b || b.disabled) return;
+  const k = b.dataset.k, v = b.dataset.v;
+  st[k] = (st[k] === v && v !== "すべて") ? "すべて" : v;
+  if (k === "p" && st.c !== "すべて" && st.p !== "すべて" && C_PART[st.c] !== st.p) st.c = "すべて";
+  render();
+});
+document.getElementById("active").addEventListener("click", e => {
+  const b = e.target.closest("[data-clear]"); if (b) { st[b.dataset.clear] = "すべて"; render(); }
+});
+document.getElementById("feed").addEventListener("click", e => {
+  const k = e.target.closest(".clip"); if (k) { toggleClip(k.dataset.u); return; }
+  const c = e.target.closest(".card"); if (c) openSheet(+c.dataset.i);
+});
+document.getElementById("sheet").addEventListener("click", e => { if (e.target.id === "sheet") e.target.close(); });
+document.getElementById("startog").addEventListener("click", () => { st.star = !st.star; render(); });
+render();
+</script>
+
+</body>
+</html>
