@@ -1,0 +1,2 @@
+# healthclip-sync フォルダの中身を、外部から閲覧できないようにする
+Require all denied

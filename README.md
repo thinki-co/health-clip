@@ -16,10 +16,11 @@
 
 さくらのサーバーは海外からのFTP接続を制限しているため、GitHubから送るのではなく、さくらのサーバー側から定期的に最新版を取得します。
 
-1. さくらのファイルマネージャーで `/home/think-i/healthclip-sync/` を作り、`tools/sakura-sync.sh` を置きます。
-2. リポジトリが非公開の場合は、同じフォルダに読み取り専用のトークンを書いた `token` ファイルを置きます。
-3. さくらのコントロールパネルの CRON で、`sh /home/think-i/healthclip-sync/sakura-sync.sh` を1時間ごとに実行します。
-4. 反映の記録は `/home/think-i/healthclip-sync/sync.log` に残ります。
+1. さくらのファイルマネージャーで `/home/think-i/www/healthclip-sync/` を作り、`tools/sakura-sync.sh` を置きます。
+2. 同じフォルダに、`tools/sakura-sync.htaccess` の内容で `.htaccess` を作り、外部からの閲覧を禁止します。
+3. さくらのコントロールパネルの CRON で、`sh /home/think-i/www/healthclip-sync/sakura-sync.sh` を1時間ごとに実行します。
+4. 反映の記録は `/home/think-i/www/healthclip-sync/sync.log` に残ります。
+5. リポジトリは公開（Public）にしているため、トークンは不要です。
 
 ## 公開前に入力する項目
 

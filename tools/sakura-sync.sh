@@ -5,12 +5,12 @@
 set -eu
 
 BASE="/home/think-i"
-DIR="$BASE/healthclip-sync"          # このスクリプトと記録ファイルを置くフォルダ（公開フォルダの外）
+DIR="$BASE/www/healthclip-sync"      # このスクリプトと記録ファイルを置くフォルダ（.htaccess で外部からの閲覧を禁止）
 DEST="$BASE/www/healthclip"          # 公開フォルダ
 REPO="thinki-co/health-clip"
 API="https://api.github.com/repos/$REPO"
 
-# 非公開リポジトリの場合のみ、読み取り専用のトークンを token ファイルに置く
+# リポジトリを非公開に戻した場合のみ、読み取り専用のトークンを token ファイルに置く
 AUTH=""
 if [ -s "$DIR/token" ]; then
   AUTH="Authorization: Bearer $(cat "$DIR/token")"
