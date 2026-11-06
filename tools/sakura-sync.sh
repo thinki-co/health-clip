@@ -4,6 +4,9 @@
 # 新しい更新がない場合は、何もせずに終了する。
 set -eu
 
+# CRON では PATH が短いため、curl のある /usr/local/bin を明示する
+export PATH="/usr/local/bin:/usr/bin:/bin"
+
 BASE="/home/think-i"
 DIR="$BASE/www/healthclip-sync"      # このスクリプトと記録ファイルを置くフォルダ（.htaccess で外部からの閲覧を禁止）
 DEST="$BASE/www/healthclip"          # 公開フォルダ
