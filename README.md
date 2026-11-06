@@ -10,7 +10,7 @@
 | `site/` | さくらのサーバーにアップロードするファイル一式 |
 | `site/about.html` ほか | 運営者情報・免責事項・プライバシーポリシー（直接編集します） |
 | `tools/build_index.py` | `src/feed.html` から `site/index.html` を作ります |
-| `tools/sakura-sync.sh` | さくらのサーバーで定期実行し、`site/` の最新版を公開フォルダに反映します |
+| `tools/sakura-sync.sh` | さくらのサーバーで毎日実行し、`site/` の最新版を公開フォルダに反映します |
 
 ## さくらのサーバーへの反映の仕組み
 
@@ -18,7 +18,7 @@
 
 1. さくらのファイルマネージャーで `/home/think-i/www/healthclip-sync/` を作り、`tools/sakura-sync.sh` を置きます。
 2. 同じフォルダに、`tools/sakura-sync.htaccess` の内容で `.htaccess` を作り、外部からの閲覧を禁止します。
-3. さくらのコントロールパネルの CRON で、`sh /home/think-i/www/healthclip-sync/sakura-sync.sh` を1時間ごとに実行します。
+3. さくらのコントロールパネルの CRON で、`sh /home/think-i/www/healthclip-sync/sakura-sync.sh` を毎日11時17分に実行します。
 4. 反映の記録は `/home/think-i/www/healthclip-sync/sync.log` に残ります。
 5. リポジトリは公開（Public）にしているため、トークンは不要です。
 
@@ -28,4 +28,4 @@
 
 ## 毎週の更新
 
-毎週月曜日に自動収集が `src/feed.html` と `site/index.html` を更新して main ブランチに反映します。さくらのサーバーは、1時間以内に最新版を取得します。
+毎週月曜日に自動収集が `src/feed.html` と `site/index.html` を更新して main ブランチに反映します。さくらのサーバーは、毎日11時17分に最新版を取得します。
