@@ -18,7 +18,7 @@ meta = """
 <meta property="og:url" content="https://healthclip.thinki.co.jp/">
 <link rel="canonical" href="https://healthclip.thinki.co.jp/">
 <meta name="theme-color" content="#2F6BFF">"""
-GTAG = '<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-P9D6VCBJ"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag(\'js\', new Date());\n</script>\n'
+GTAG = '<script async src="https://www.googletagmanager.com/gtag/js?id=G-NC2QH4BGY1"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag(\'js\', new Date());\n  gtag(\'config\', \'G-NC2QH4BGY1\');\n</script>\n'
 html = ("<!doctype html>\n<html lang=\"ja\">\n<head>\n" + GTAG + "<meta charset=\"utf-8\">\n"
         "<meta name=\"viewport\" content=\"width=device-width,initial-scale=1,viewport-fit=cover\">\n"
         "<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}"
