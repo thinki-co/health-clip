@@ -88,6 +88,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .pbtn[aria-pressed="true"] small { color: #233300; }
 .pbtn:disabled { opacity: .45; cursor: default; }
 .pbtn:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+.pclear.all { background: var(--none-bg); color: var(--ink); }
 .pclear { border: 0; background: var(--lime); color: #233300; font: 700 12px/1 var(--f-body); padding: 4px 8px; border-radius: 999px; cursor: pointer; margin-left: 6px; }
 .sels { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }
 .sel { display: flex; align-items: center; gap: 6px; min-width: 0; border: 1px solid var(--line); background: var(--surface); border-radius: 10px; padding: 0 0 0 10px; }
@@ -548,14 +549,15 @@ const PARTS = ["脳・神経","目","口・歯","肌","髪","血管・血液","�
 const MEANS = ["食べ物・飲み物", "食べ方・レシピ", "サプリ", "薬・治療", "生活習慣"];
 const QUALS = ["医師", "歯科医師", "管理栄養士", "薬剤師", "研究者", "その他の資格"];
 ITEMS.forEach(it => { it.b = [...new Set(it.c.map(c => C_PART[c]))]; });
-const st = { c: "すべて", p: "すべて", m: "すべて", q: "すべて", star: false };
+/* 同じ種類の中は「いずれか」、種類どうしは「すべて満たす」で絞り込む */
+const st = { c: new Set(), p: new Set(), m: new Set(), q: new Set(), star: false };
 
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const tieChip = t => t
   ? `<span class="tie"><i></i>販売・PR：${esc(t.split("：")[0])}</span>`
   : `<span class="tie none"><i></i>販売・PRとの関係：確認できず</span>`;
-const match = (it, o) => (o.c === "すべて" || it.c.includes(o.c)) && (o.p === "すべて" || it.b.includes(o.p))
-  && (o.m === "すべて" || it.m === o.m) && (!o.star || clips.has(it.url)) && (o.q === "すべて" || (it.q || []).includes(o.q));
+const any = (set, vals) => set.size === 0 || vals.some(v => set.has(v));
+const match = (it, o) => any(o.c, it.c) && any(o.p, it.b) && any(o.m, [it.m]) && any(o.q, it.q || []) && (!o.star || clips.has(it.url));
 const countWith = patch => ITEMS.filter(it => match(it, { ...st, ...patch })).length;
 
 /* クリップ：ログインなしで、閲覧しているブラウザに保存する */
@@ -570,25 +572,27 @@ function toggleClip(url) {
 let tab = "theme";
 const LABEL = { c: "", m: "", q: "", p: "部位：" };
 const chipBtns = (key, list, counts) => ["すべて", ...list].map(t => {
-  const n = counts ? counts(t) : null;
-  const dis = n === 0 && st[key] !== t;
-  return `<button class="chip" type="button" data-k="${key}" data-v="${esc(t)}" aria-pressed="${st[key] === t}" ${dis ? "disabled" : ""}>${esc(t)}${n !== null && t !== "すべて" ? `<small>${n}</small>` : ""}</button>`;
+  const on = t === "すべて" ? st[key].size === 0 : st[key].has(t);
+  const n = counts && t !== "すべて" ? counts(t) : null;
+  const dis = n === 0 && !on;
+  return `<button class="chip" type="button" data-k="${key}" data-v="${esc(t)}" aria-pressed="${on}" ${dis ? "disabled" : ""}>${esc(t)}${n !== null ? `<small>${n}</small>` : ""}</button>`;
 }).join("");
 function renderPanel() {
   document.querySelectorAll(".ftabs button").forEach(b => b.setAttribute("aria-selected", b.dataset.tab === tab));
   let html = "";
   if (tab === "theme") {
-    const shown = CONCERNS.map(([n]) => n).filter(n => n === st.c || ((st.p === "すべて" || C_PART[n] === st.p) && countWith({ c: n }) > 0));
+    const shown = CONCERNS.map(([n]) => n).filter(n => st.c.has(n) || ((st.p.size === 0 || st.p.has(C_PART[n])) && countWith({ c: new Set([n]) }) > 0));
     html = `<div class="chips">${chipBtns("c", shown)}</div>`;
   } else if (tab === "part") {
-    html = `<div class="chips">${chipBtns("p", PARTS, n => countWith({ p: n, c: "すべて" }))}</div>`;
+    html = `<div class="chips">${chipBtns("p", PARTS, n => countWith({ p: new Set([n]), c: new Set() }))}</div>`;
   } else {
     html = `<span class="glbl">取り入れ方</span><div class="chips">${chipBtns("m", MEANS)}</div>
       <span class="glbl">専門分野・資格</span><div class="chips">${chipBtns("q", QUALS)}</div>`;
   }
   document.getElementById("panel").innerHTML = html;
-  const act = ["c", "m", "p", "q"].filter(k => st[k] !== "すべて");
-  document.getElementById("active").innerHTML = act.map(k => `<button class="pclear" type="button" data-clear="${k}">${LABEL[k]}${esc(st[k])} ×</button>`).join("");
+  const act = ["c", "m", "p", "q"].flatMap(k => [...st[k]].map(v => [k, v]));
+  document.getElementById("active").innerHTML = act.map(([k, v]) => `<button class="pclear" type="button" data-clear="${k}" data-v="${esc(v)}">${LABEL[k]}${esc(v)} ×</button>`).join("")
+    + (act.length > 1 ? `<button class="pclear all" type="button" data-clear="all">すべて解除</button>` : "");
 }
 function render() {
   renderPanel();
@@ -644,12 +648,16 @@ document.querySelector(".ftabs").addEventListener("click", e => {
 document.getElementById("panel").addEventListener("click", e => {
   const b = e.target.closest(".chip"); if (!b || b.disabled) return;
   const k = b.dataset.k, v = b.dataset.v;
-  st[k] = (st[k] === v && v !== "すべて") ? "すべて" : v;
-  if (k === "p" && st.c !== "すべて" && st.p !== "すべて" && C_PART[st.c] !== st.p) st.c = "すべて";
+  if (v === "すべて") st[k].clear();
+  else st[k].has(v) ? st[k].delete(v) : st[k].add(v);
+  if (k === "p" && st.p.size) [...st.c].forEach(c => { if (!st.p.has(C_PART[c])) st.c.delete(c); });
   render();
 });
 document.getElementById("active").addEventListener("click", e => {
-  const b = e.target.closest("[data-clear]"); if (b) { st[b.dataset.clear] = "すべて"; render(); }
+  const b = e.target.closest("[data-clear]"); if (!b) return;
+  if (b.dataset.clear === "all") ["c", "m", "p", "q"].forEach(k => st[k].clear());
+  else st[b.dataset.clear].delete(b.dataset.v);
+  render();
 });
 document.getElementById("feed").addEventListener("click", e => {
   const k = e.target.closest(".clip"); if (k) { toggleClip(k.dataset.u); return; }
