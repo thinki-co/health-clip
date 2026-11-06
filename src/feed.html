@@ -51,6 +51,31 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 
 /* ヘッダー */
 .top { background: var(--surface); border-bottom: 1px solid var(--line); }
+.top .wrap { position: relative; }
+.menubtn { position: absolute; top: 12px; right: max(10px, env(safe-area-inset-right, 0px)); width: 44px; height: 44px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); color: var(--ink); cursor: pointer; }
+.menubtn svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+.menubtn:focus-visible, .dr-item:focus-visible, .dr-group summary:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+.brandrow { padding-right: 56px; }
+dialog.drawer { margin: 0 0 0 auto; width: min(380px, 90vw); max-width: none; height: 100%; max-height: none; border-radius: 0; padding: calc(12px + env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) calc(20px + env(safe-area-inset-bottom, 0px)) 16px; display: none; flex-direction: column; gap: 10px; overflow-y: auto; }
+dialog.drawer[open] { display: flex; }
+.dr-head { display: flex; justify-content: space-between; align-items: center; padding-bottom: 6px; border-bottom: 1px solid var(--line); }
+.dr-head b { font-size: 16px; }
+.dr-head .close { margin-top: 0; }
+.dr-item { display: flex; justify-content: space-between; align-items: center; gap: 8px; width: 100%; padding: 13px 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); color: var(--ink); font: 700 14px/1.4 var(--f-body); text-decoration: none; text-align: left; cursor: pointer; }
+.dr-item small { font-weight: 700; color: var(--muted); font-variant-numeric: tabular-nums; }
+.dr-star { font-style: normal; color: var(--star); margin-right: 6px; }
+.dr-group { display: grid; gap: 8px; }
+.dr-group details { border: 1px solid var(--line); border-radius: 12px; background: var(--bg); }
+.dr-group summary { list-style: none; cursor: pointer; padding: 13px 14px; font-weight: 700; font-size: 14px; display: flex; justify-content: space-between; }
+.dr-group summary::-webkit-details-marker { display: none; }
+.dr-group summary::after { content: "＋"; color: var(--muted); }
+.dr-group details[open] summary::after { content: "−"; }
+.dr-body { padding: 0 14px 14px; font-size: 13px; color: var(--muted); line-height: 1.75; }
+.dr-body ul { margin: 0; padding-left: 1.2em; display: grid; gap: 6px; }
+.dr-body p { margin: 0; }
+.dr-body b { color: var(--ink); }
+.dr-links { display: grid; gap: 8px; margin-top: 6px; padding-top: 12px; border-top: 1px solid var(--line); }
+.dr-links span { color: var(--muted); font-size: 18px; }
 .top .wrap { padding-block: 16px 14px; display: grid; gap: 6px; }
 .brandrow { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
 .logo { display: inline-flex; align-items: center; gap: 7px; font-family: var(--f-display); font-weight: 800; font-size: 24px; letter-spacing: -.01em; color: var(--ink); }
@@ -214,8 +239,20 @@ dialog::backdrop { background: rgba(10,22,36,.45); }
       <span class="kana">ヘルスクリップ</span>
     </div>
     <p class="catch">気になる健康情報を、まとめてチェック。</p>
+    <button class="menubtn" type="button" id="menubtn" aria-label="メニューを開く" aria-haspopup="dialog" aria-controls="menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
   </div>
 </header>
+
+<dialog class="drawer" id="menu" aria-label="メニュー">
+  <div class="dr-head"><b>メニュー</b><button class="close" type="button" id="menu-close">閉じる</button></div>
+  <button class="dr-item" type="button" id="menu-clip"><span><i class="dr-star">★</i>マイクリップを表示</span><small id="menu-clip-n"></small></button>
+  <div class="dr-group" id="menu-info"></div>
+  <nav class="dr-links" aria-label="サイト情報">
+    <a class="dr-item" href="about.html">運営者情報・お問い合わせ<span aria-hidden="true">›</span></a>
+    <a class="dr-item" href="disclaimer.html">免責事項<span aria-hidden="true">›</span></a>
+    <a class="dr-item" href="privacy.html">プライバシーポリシー<span aria-hidden="true">›</span></a>
+  </nav>
+</dialog>
 
 <nav class="filters" id="filters" aria-label="話題の絞り込み">
   <div class="wrap">
@@ -232,9 +269,9 @@ dialog::backdrop { background: rgba(10,22,36,.45); }
 <main class="wrap">
   <ul class="feed" id="feed"></ul>
   <section class="rules" id="rules" aria-labelledby="rules-h">
-    <h2>サイト概要</h2>
+    <h2 id="overview">サイト概要</h2>
     <p class="about">ネットで話題の「身体によいと言われるもの」を幅広く集め、テーマや身体の部位、専門分野・資格などから探しやすく整理。気になる健康情報を効率よく見つけ、興味のある記事はクリップして保存。あとからいつでも見返せるサイトです。</p>
-    <h2>収集方法</h2>
+    <h2 id="method">収集方法</h2>
     <ul class="method">
       <li><b>対象</b>：ネットで公開された、身体によいと言われる食べ物・飲み物・食べ方・サプリ・薬・生活習慣についての記事と投稿</li>
       <li><b>収集元</b>：ニュースサイト・健康情報サイト・医療機関のブログ・企業のプレスリリース・公的機関や学会の発表・研究論文・SNSのまとめ（Togetter、Yahoo!リアルタイム検索「SNSのバズまとめ」）・YouTube</li>
@@ -679,5 +716,31 @@ document.getElementById("feed").addEventListener("click", e => {
 });
 document.getElementById("sheet").addEventListener("click", e => { if (e.target.id === "sheet") e.target.close(); });
 document.getElementById("startog").addEventListener("click", () => { st.star = !st.star; render(); });
+
+/* メニュー：ページ下部のサイト概要・収集方法・掲載ルールを、メニュー内で開いて読めるようにする */
+(function buildMenu() {
+  const box = document.getElementById("menu-info");
+  ["overview", "method", "rules-h"].forEach(id => {
+    const h = document.getElementById(id); if (!h) return;
+    const d = document.createElement("details");
+    const sm = document.createElement("summary"); sm.textContent = h.textContent;
+    const body = document.createElement("div"); body.className = "dr-body";
+    let n = h.nextElementSibling;
+    while (n && n.tagName !== "H2") { body.appendChild(n.cloneNode(true)); n = n.nextElementSibling; }
+    body.querySelectorAll("[id]").forEach(el => el.removeAttribute("id"));
+    d.append(sm, body); box.appendChild(d);
+  });
+})();
+const menu = document.getElementById("menu");
+document.getElementById("menubtn").addEventListener("click", () => {
+  document.getElementById("menu-clip-n").textContent = `${clips.size}件`;
+  menu.showModal();
+});
+document.getElementById("menu-close").addEventListener("click", () => menu.close());
+menu.addEventListener("click", e => { if (e.target === menu) menu.close(); });
+document.getElementById("menu-clip").addEventListener("click", () => {
+  st.star = true; render(); menu.close();
+  document.getElementById("filters").scrollIntoView({ behavior: "smooth" });
+});
 render();
 </script>
