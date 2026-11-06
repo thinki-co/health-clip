@@ -11,7 +11,7 @@ s = s.replace('<meta name="claude:viewport-fit-sides" content="cover">\n', "")
 t_end = s.index("</title>") + len("</title>")
 st_end = s.index("</style>") + len("</style>")
 meta = """
-<meta name="description" content="ネットで話題の「身体によいと言われるもの」を、発信元と販売・PRとの関係つきで集めたサイトです。テーマ・からだの部位・専門分野から探し、気になる記事を保存できます。">
+<meta name="description" content="ネットで話題の「身体によいと言われるもの」と、健康診断や検査の数値・基準値に関する情報を、発信元と販売・PRとの関係つきで集めたサイトです。">
 <meta property="og:title" content="Health Clip ヘルスクリップ">
 <meta property="og:description" content="気になる健康情報を、まとめてチェック。">
 <meta property="og:type" content="website">
